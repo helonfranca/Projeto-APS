@@ -1,0 +1,36 @@
+.modal {
+  
+  position: fixed; /* Mantém o modal fixo na tela */
+  z-index: 1; /* Mantém o modal na frente de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%; /* Largura total da tela */
+  height: 100%; /* Altura total da tela */
+  overflow: auto; /* Permite rolagem dentro do modal */
+  background-color: rgba(0,0,0,0.4); /* Fundo escuro */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto; /* Centraliza o modal na tela */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%; /* Largura do conteúdo do modal */
+  border-radius: 10px; 
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+

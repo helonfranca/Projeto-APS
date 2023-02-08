@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: OpenSans;
+    src: url(OpenSans-Regular.ttf);
+}
+
+*{
+    font-family: OpenSans;
+}
+
+/*Todos os botões estão aqui.*/
+button {
+    background-color: #594848;
+    border-radius: 30px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 5px;
+    border: aliceblue;
+    font-family: cursive;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: OpenSans;
+}
+
+/*Botoões da tabela e de cadastrar também estão aqui, "a sua div"*/
+.bt-container { 
+    display: flex;
+    justify-content: right;
+    padding-bottom: 5px;
+    padding-top: 10px;
+    margin-right: 100px;
+}
+
+.container_table{
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.itens_menu_esq {
+    background-color: #594848;
+	border-radius: 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 5px;
+    margin-left: 20px;
+    text-align: center;
+    margin-right: 20px;
+    width: 220px;
+}
+
+
+table {
+    width: 90%;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+        
+}
+    
+th, td {
+    text-align: center;
+    padding: 8px;
+}
+    
+tr:nth-child(even){background-color: #f2f2f2}
+    
+th {
+    background-color: #594848;
+    color: white;
+}
+
+    /*Link */
+
+a:link {
+    color: white;
+    text-decoration: none;
+}
+  
+/* Linhas caso fosse usar
+    hr {
+        margin: 20px;
+      }
+
+.hr1 {
+        border: 0;
+        border-top: 1px solid rgb(204, 12, 12);
+      }
+      
+*/
+
+.dentro-bloco {
+    border-radius: 60px;
+    width: 400px;
+    color: white;
+    padding: 15px;
+    margin-top: 30px;
+    margin-left: 600px;
+    height: 50px;
+    background-color: #594848;
+    
+}
+
+.dentro-bloco h3{
+    text-align: center;
+}
+

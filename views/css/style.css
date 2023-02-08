@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: OpenSans;
+    src: url(OpenSans-Regular.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: OpenSans;
+}
+
+.logo{
+    width: 25%;
+}
+
+.logo img{
+    width: 200px;
+    cursor: pointer;
+}
+
+.container{
+    max-width: 100%;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+header{
+    background-color: #f1e9e0;
+    width: 100%;
+    padding: 5px;
+}
+
+.menu{
+    width: 50%;
+}
+.menu nav a{
+    background-color: #594848;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin: 5px;
+    
+}
+
+.login button{
+    border: none;
+    padding: 10px;
+    /* text-decoration: none; */
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    background-color: #594848;
+    color: white;
+    font-family: OpenSans;
+} 
+
+.biblioteca{
+    display: flex;
+    justify-content: center;
+}
+
+.navegacao{
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    width: 800px;
+}
+
+footer{
+    background-color: #f1e9e0;
+}
+
+.company-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.company-footer h2 {
+    margin: 20px;
+    text-align: center;
+    font-size: 15px;
+}
+.blocos{
+    display: flex;
+    flex-direction: column;
+}
+
+.dentro_bloco{
+    text-align: center;
+    background-color: #594848;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0 auto;
+    color:white;
+    padding: 15px;
+}
+
+.dentro_bloco h3 {
+    margin: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.dentro_bloco a {
+    margin: 10px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.text h2{
+    margin-top: 60px;
+}
+
+.dentro-form{
+    width: 400px;
+    margin-inline: auto;
+    text-align: center;
+  
+}
+.dentro-form h2{
+    text-align: center;
+}
+  
+.dentro-form h3{
+    text-align: left;
+    font-size: 17px;
+}
+
+.form-dados input{
+	width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    /* border-radius: 50px; */
+    margin-top: 10px;
+}
+
+.form-dados{
+    text-align: center;
+}
+
+.dentro-form button{
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+    background-color: #594848;
+    color: white;
+    border: transparent;
+}
+
+/* .dentro-form label{
+    font-weight: bold;
+}  */
