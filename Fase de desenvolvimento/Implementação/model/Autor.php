@@ -1,6 +1,6 @@
 <?php
 
-require_once("conexao.php");
+require_once("conexaoDB.php");
 
 
 class Autor extends Pessoa{
