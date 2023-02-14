@@ -13,7 +13,7 @@ abstract class conexaoDB
     {
         if (self::$pdo == null){
             try {
-                self::$pdo = new PDO("mysql:host=localhost;dbname=projeto_aps", "root", "");
+                self::$pdo = new PDO("mysql:host=localhost;dbname=biblioteca_aps", "root", "morango19");
                 self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch(PDOException $e) {
                 die("Connection failed: " . $e->getMessage());
