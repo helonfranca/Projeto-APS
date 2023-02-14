@@ -9,8 +9,6 @@ abstract class Pessoa {
     protected string $sexo;
     protected string $CurriculoLattes;
     protected string $instituicao;
-
-
 }
 
 
