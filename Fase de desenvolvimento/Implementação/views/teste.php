@@ -12,7 +12,7 @@
 <body>
     <fieldset>
         <legend>Cadastro de Pessoa</legend>
-        <form method="post" action="../controller/GerenciamentoAutor.php">
+        <form method="post" action="controller/GerenciamentoAutor.php">
             
             <label for="nome">Nome:</label>
             <input id="nome" name="nome" type="text" />
