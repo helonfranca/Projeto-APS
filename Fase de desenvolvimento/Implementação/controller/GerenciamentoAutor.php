@@ -22,7 +22,7 @@ class GerenciamentoAutor{
         $this->cadastro->setDataDeNascimento(date('Y-m-d',strtotime($_POST['DataDeNascimento'])));
         $result = $this->incluir();
         if($result >= 1){
-            echo "<script>alert('Registro incluído com sucesso!');document.location='C:\Users\vandr\Documents\Projeto-APS fork\Projeto-APS\Fase de desenvolvimento\Implementação\views\pages\Secretário\pgs gerencia\crudAutores.php'</script>";
+            echo "<script>alert('Registro incluído com sucesso!');document.location='../views/pages/Secretário/pgs gerencia/crudAutores.php'</script>";
         }else{
             echo "<script>alert('Erro ao gravar registro!, verifique se o livro não está duplicado');history.back()</script>";
         }

@@ -57,7 +57,7 @@
                 <div id="modal" name="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="C:\Users\vandr\Documents\Projeto-APS fork\Projeto-APS\Fase de desenvolvimento\Implementação\controller\GerenciamentoAutor.php">
+                            <form method="post" action="../../../../controller/GerenciamentoAutor.php">
                                 <div class="dentro-form">
                                     <h1>Adicionar novo autor</h1></br>
                                     <div class= "form-dados">
@@ -71,10 +71,9 @@
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
                                         Sexo:</br>
                                             <label for="feminino">Feminino</label>
-                                            <input type="radio" id="Feminino" name="sexo" value="HTML"></br></br>
+                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
                                              <label for="masculino">Masculino</label>
-                                            <input type="radio" id="Masculino" name="sexo" value="CSS"></br></br>
-                                            
+                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
                                     
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
@@ -99,20 +98,22 @@
                                 <div class="dentro-form">
                                     <h1>Dados Autor</h1></br>
                                     <div class= "form-dados">
-                                        <label for="nome">Nome do Evento:</label></br>
-                                        <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="ano">Ano:</label></br>
-                                        <input type="date" id="ano" name="ano" placeholder="" maxlength="4" required></br>
-                                        <label for="organizador">Organizador:</label></br>
-                                        <input type="organizador" id="organizador" name="organizador" placeholder="" required></br>
-                                        <label for="ano">Tipo:</label></br>
-                                        <input type="text" id="tipo" name="tipo" placeholder="" required></br>
-                                        <label for="link">Link do Evento:</label></br>
-                                        <input type="link" id="link" name="link" placeholder="" required></br>
-                                        <label for="descrição">Descrição:</label></br>
-                                        <input type="text" id="descrição" name="descrição" placeholder="" required></br>
-                                        <label for="ano">Trilha:</label></br>
-                                        <input type="text" id="ano" name="trilha" placeholder=""></br>
+                                    <label for="nome">Nome do Autor:</label></br>
+                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
+                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
+                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <label for="CurriculoLattes">Curriculo-lattes:</label></br>
+                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
+                                        <label for="Instituição">Instituição:</label></br>
+                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
+                                        Sexo:</br>
+                                            <label for="feminino">Feminino</label>
+                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
+                                             <label for="masculino">Masculino</label>
+                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
+                                    
+                                        <label for="Telefone">Telefone:</label></br>
+                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -134,20 +135,22 @@
                                 <div class="dentro-form">
                                     <h1>Editar Autor</h1></br>
                                     <div class= "form-dados">
-                                        <label for="nome">Nome do Evento:</label></br>
-                                        <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="ano">Ano:</label></br>
-                                        <input type="number" id="ano" name="ano" placeholder="" maxlength="4" required></br>
-                                        <label for="organizador">Organizador:</label></br>
-                                        <input type="organizador" id="organizador" name="organizador" placeholder="" required></br>
-                                        <label for="ano">Tipo:</label></br>
-                                        <input type="text" id="tipo" name="tipo" placeholder="" required></br>
-                                        <label for="link">Link do Evento:</label></br>
-                                        <input type="link" id="link" name="link" placeholder="" required></br>
-                                        <label for="descrição">Descrição:</label></br>
-                                        <input type="text" id="descrição" name="descrição" placeholder="" required></br>
-                                        <label for="ano">Trilha:</label></br>
-                                        <input type="text" id="ano" name="trilha" placeholder=""></br>
+                                    <label for="nome">Nome do Autor:</label></br>
+                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
+                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
+                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <label for="CurriculoLattes">Curriculo-lattes:</label></br>
+                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
+                                        <label for="Instituição">Instituição:</label></br>
+                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
+                                        Sexo:</br>
+                                            <label for="feminino">Feminino</label>
+                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
+                                             <label for="masculino">Masculino</label>
+                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
+                                    
+                                        <label for="Telefone">Telefone:</label></br>
+                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
