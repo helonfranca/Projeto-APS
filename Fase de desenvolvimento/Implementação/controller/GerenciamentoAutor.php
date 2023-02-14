@@ -1,7 +1,7 @@
 <?php
 require_once("../model/Pessoa.php");
 require_once("../model/Autor.php");
-require_once("../model/conexao.php");
+require_once("../model/conexaoDB.php");
 
 class GerenciamentoAutor{
 
