@@ -1,4 +1,21 @@
-<!DOCTYPE html>
+<?php
+session_start(); // deve ser chamado antes de qualquer saída HTML
+ 
+if (isset($_SESSION['tipo_usuario'])) {
+    switch ($_SESSION['tipo_usuario']) {
+        case "1": 
+            header("Location: ../pages/adm/MenuAdm.php");
+            exit();
+        case "2": 
+            header("Location: ../pages/Secretário/MenuSecretário.php");
+            exit();
+        default: 
+            header("Location: ../pages/index.php");
+            exit();
+    }
+}
+
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -34,7 +51,7 @@
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../controller/LoginController.php">
                                 <div class="dentro-form">
                                     <h2>Área de gerenciamento</h2></br>
                                     <h3>Insira suas credenciais:</h3></br>
@@ -43,8 +60,14 @@
                                         <input type="email" id="email" name="email" placeholder="Exemplo@gmail.com" required>
                                         </br>
                                         <label for="password">Senha:</label></br>
-                                        <input type="password" id="password" name="senha" placeholder="Senha" required>
+                                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
                                     </div>
+                                    <?php
+                                        if (isset($_SESSION['login_erro'])) { // verifica se a variável de sessão existe
+                                            echo '<div class="alert alert-danger" role="alert">' . $_SESSION['login_erro'] . '</div>'; // exibe a mensagem de erro
+                                            unset($_SESSION['login_erro']); // remove a variável de sessão
+                                        }
+                                    ?>
                                     </br></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit" submit="">Confirmar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -120,3 +143,4 @@
         </footer>
     </body>
 </html>
+
