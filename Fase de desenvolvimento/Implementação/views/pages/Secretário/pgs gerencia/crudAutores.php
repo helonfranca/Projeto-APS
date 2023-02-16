@@ -1,5 +1,24 @@
+<?php
+require_once("../../../../model/Pessoa.php");
+require_once("../../../../model/Autor.php");
+require_once("../../../../controller/verificarAutor.php")
+
+
+/*
+session_start();
+
+if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
+    header("Location: ../index.php");
+    exit();
+}
+*/
+
+
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -215,10 +234,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        
+
+                        <?php foreach ($lista_autores as $linha): ?> 
+                            
                         <tr>
-                            <td>Helon de França</td>
-                            <td>UFRRJ</td>
-                            <td>+55(99)99999-9999</td>
+                            <td><?= $linha->Nome ?></td>
+                            <td><?= $linha->Telefone ?></td>
+                            <td><?= $linha->Instituição ?></td>
                             <td>
                                 <button type="button" id = "btn3">Verificar</button>
                                 <button type="button" id = "btn4">Editar</button>
@@ -226,49 +249,7 @@
                             </td>
                         </tr>
 
-                        <tr>
-                            <td>Pablo</td>
-                            <td>UFRRJ</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Vanessa</td>
-                            <td>UFRRJ</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Thiago</td>
-                            <td>UFRRJ</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>Pablo</td>
-                            <td>UFRRJ</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
+                        <?php endforeach?>
                     </tbody>
                 </table>
             </div>
