@@ -103,7 +103,7 @@ class Autor extends Pessoa{
     {
         $conn = conexaoDB::conexao();
 
-        $stmt = "SELECT * FROM artigo ORDER BY Artigo_ID DESC";
+        $stmt = "SELECT * FROM autor ORDER BY Autor_ID DESC";
 
         $stmt = $conn->prepare($stmt);
 
@@ -122,6 +122,8 @@ class Autor extends Pessoa{
         return $resultado;
 
     }
+
+    
 
 
 
