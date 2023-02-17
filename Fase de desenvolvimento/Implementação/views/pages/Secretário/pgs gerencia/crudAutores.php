@@ -134,7 +134,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" class="cancel-button3">Cancelar</button>
+                                        <button type="button" class="cancel-button3" data-modal-id="modal3">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -170,8 +170,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" class="cancel-button4">Cancelar</button>
+                                        <button type="submit" >Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" class="cancel-button4" data-modal-id="modal4">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -192,7 +192,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <h3 style="text-align: center;">Você realmente deseja apagar o Autor?</h3></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" class="cancel-button5">Cancelar</button>
+                                        <button type="button" class="cancel-button5" data-modal-id="modal5">Cancelar</button>
                                     </div>
                                     <input type="hidden" name="id_autor" id="id_autor_remover" value="">
                                 </div>
@@ -283,7 +283,21 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
                 $("#"+modalId).show(); // mostra o modal correspondente
                 });
+
+                $(".cancel-button3").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).hide(); // vai fechar o modal correspondente
+                });
                 
+                $(".cancel-button4").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).hide(); // vai fechar o modal correspondente
+                });
+
+                $(".cancel-button5").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).hide(); // vai fechar o modal correspondente
+                });
             });
 
         </script>
