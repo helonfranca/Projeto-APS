@@ -2,7 +2,6 @@
 
 require_once("../../../../controller/verificarAutor.php");
 
-
 /*
 session_start();
 
@@ -135,7 +134,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button3">Cancelar</button>
+                                        <button type="button" class="cancel-button3">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -172,7 +171,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button4">Cancelar</button>
+                                        <button type="button" class="cancel-button4">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -181,20 +180,21 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </div>
             </div>
 
-            <!-- Modal Remover Evento -->
+            <!-- Modal Remover Autor -->
             <div id="modal5" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../../../controller/DeletarAutorController.php">
                                 <div class="dentro-form">
                                     <h1 style="text-align: center;">Removendo Autor</h1></br>
                                     <h2 style="text-align: center;">Aviso:</h2></br>
                                     <h3 style="text-align: center;">Você realmente deseja apagar o Autor?</h3></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button5">Cancelar</button>
+                                        <button type="button" class="cancel-button5">Cancelar</button>
                                     </div>
+                                    <input type="hidden" name="id_autor" id="id_autor_remover" value="">
                                 </div>
                             </form>
                         </div>
@@ -239,12 +239,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                             
                         <tr>
                             <td><?= $linha->Nome ?></td>
-                            <td><?= $linha->Telefone ?></td>
                             <td><?= $linha->Instituição ?></td>
+                            <td><?= $linha->Telefone ?></td>
                             <td>
-                                <button type="button" id = "btn3">Verificar</button>
-                                <button type="button" id = "btn4">Editar</button>
-                                <button type="button" id = "btn5">Remover</button>
+                                <button type="button" data-modal-id="modal3" class = "btn3">Verificar</button>
+                                <button type="button" data-modal-id="modal4" class = "btn4">Editar</button>
+                                <button type="button" data-modal-id="modal5" class = "btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
                             </td>
                         </tr>
 
@@ -252,10 +252,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                     </tbody>
                 </table>
             </div>
-             
         </section>
 
-        
         <script src="../../../js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
@@ -271,26 +269,30 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 $("#cancel-button2").click(function(){
                     $("#modal2").hide();
                 });
-                $("#btn3").click(function(){
-                    $("#modal3").show();
-                });              
-                $("#cancel-button3").click(function(){
-                    $("#modal3").hide();
+                $(".btn3").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).show(); // mostra o modal correspondente
                 });
-                $("#btn4").click(function(){
-                    $("#modal4").show();
-                });              
-                $("#cancel-button4").click(function(){
-                    $("#modal4").hide();
+
+                $(".btn4").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).show(); // mostra o modal correspondente
                 });
-                $("#btn5").click(function(){
-                    $("#modal5").show();
-                });              
-                $("#cancel-button5").click(function(){
-                    $("#modal5").hide();
+
+                $(".btn5").click(function(){
+                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
+                $("#"+modalId).show(); // mostra o modal correspondente
                 });
-            });        
+                
+            });
+
         </script>
+
+        <script>
+            function setAutorIdRemover(id_autor) {
+                document.getElementById("id_autor_remover").value = id_autor;
+            }
+        </script>  
 
         <footer>
             <div class="wrapper">

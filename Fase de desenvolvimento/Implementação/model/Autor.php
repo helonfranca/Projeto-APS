@@ -120,7 +120,17 @@ class Autor extends Pessoa{
         }
 
         return $resultado;
+    }
 
+    public static function deletarAutor(int $id): bool{
+
+        $conn = conexaoDB::conexao();
+
+        $sql = 'DELETE FROM autor WHERE Autor_ID = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $id);
+
+        return $stmt->execute();
     }
 
     
