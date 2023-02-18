@@ -31,6 +31,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "1") {
                 </div>
 
                 <div class= "login">
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
