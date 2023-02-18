@@ -1,6 +1,7 @@
 <?php
 include_once("conexaoDB.php");
 include_once("Pessoa.php");
+
 class Usuario extends Pessoa{
     private $conn;
     private $email;
