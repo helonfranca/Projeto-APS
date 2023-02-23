@@ -87,11 +87,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
                                         Sexo:</br>
-                                            <label for="feminino">Feminino</label>
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
-                                             <label for="masculino">Masculino</label>
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
-                                    
+                                        <div class="radiocontroller">
+                                            <label for="feminino" class="radio">
+                                            <input type="radio" id="Feminino" name="sexo" value="feminino">Feminino</label>
+                                            <label for="masculino" class="radio">
+                                            <input type="radio" id="Masculino" name="sexo" value="masculino">Masculino</label></br></br>                                           
+                                        </div>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
@@ -124,11 +125,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
                                         Sexo:</br>
-                                            <label for="feminino">Feminino</label>
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
-                                             <label for="masculino">Masculino</label>
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
-                                    
+                                        <div class="radiocontroller">
+                                            <label for="feminino" class="radio">
+                                            <input type="radio" id="Feminino" name="sexo" value="feminino">Feminino</label>
+                                            <label for="masculino" class="radio">
+                                            <input type="radio" id="Masculino" name="sexo" value="masculino">Masculino</label></br></br>                                           
+                                        </div>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
@@ -160,12 +162,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
-                                        Sexo:</br>
-                                            <label for="feminino">Feminino</label>
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino"></br></br>
-                                             <label for="masculino">Masculino</label>
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino"></br></br>                                           
-                                    
+                                        <label for="sexo">Sexo:</label></br>
+                                        <select name="select">
+                                            <option value="valor1">Masculino</option>
+                                            <option value="valor2" selected>Feminino</option>
+                                            <option value="valor3">Prefiro não dizer</option>
+                                        </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
