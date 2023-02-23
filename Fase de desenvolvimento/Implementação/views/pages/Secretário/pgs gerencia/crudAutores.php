@@ -235,24 +235,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                         </tr>
                     </thead>
                     <tbody>
-<<<<<<< Updated upstream
-                        
-
-                        <?php foreach ($lista_autores as $linha): ?> 
-                            
-                        <tr>
-                            <td><?= $linha->Nome ?></td>
-                            <td><?= $linha->Instituição ?></td>
-                            <td><?= $linha->Telefone ?></td>
-                            <td>
-                                <button type="button" data-modal-id="modal3" class = "btn3">Verificar</button>
-                                <button type="button" data-modal-id="modal4" class = "btn4">Editar</button>
-                                <button type="button" data-modal-id="modal5" class = "btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
-                            </td>
-                        </tr>
-
-                        <?php endforeach?>
-=======
                         <?php if(isset($lista_autores) && !empty($lista_autores)):
                             foreach ($lista_autores as $linha): ?>                        
                                 <tr>
@@ -267,7 +249,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                 </tr>
                             <?php endforeach;
                         endif?>
->>>>>>> Stashed changes
                     </tbody>
                 </table>
             </div>
@@ -294,15 +275,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 });
 
                 $(".btn4").click(function(){
-<<<<<<< Updated upstream
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).show(); // mostra o modal correspondente
-                });
-
-                $(".btn5").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).show(); // mostra o modal correspondente
-=======
                 var modalId = $(this).data("modal-id"); 
                 $("#"+modalId).show();
                 });
@@ -310,7 +282,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 $(".btn5").click(function(){
                 var modalId = $(this).data("modal-id"); 
                 $("#"+modalId).show(); 
->>>>>>> Stashed changes
                 });
 
                 $(".cancel-button3").click(function(){
@@ -319,15 +290,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 });
                 
                 $(".cancel-button4").click(function(){
-<<<<<<< Updated upstream
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).hide(); // vai fechar o modal correspondente
-                });
-
-                $(".cancel-button5").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).hide(); // vai fechar o modal correspondente
-=======
                 var modalId = $(this).data("modal-id"); 
                 $("#"+modalId).hide(); 
                 });
@@ -335,7 +297,6 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 $(".cancel-button5").click(function(){
                 var modalId = $(this).data("modal-id"); 
                 $("#"+modalId).hide(); 
->>>>>>> Stashed changes
                 });
             });
 
