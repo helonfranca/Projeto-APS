@@ -64,6 +64,10 @@ header{
     font-family: OpenSans;
 } 
 
+.login{
+    text-align: center;
+}
+
 .biblioteca{
     display: flex;
     justify-content: center;

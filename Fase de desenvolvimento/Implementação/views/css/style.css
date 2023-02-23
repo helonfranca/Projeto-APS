@@ -12,6 +12,10 @@
     font-family: OpenSans;
 }
 
+.login{
+    text-align: center;
+}
+
 .logo{
     width: 25%;
 }
@@ -163,3 +167,24 @@ footer{
 /* .dentro-form label{
     font-weight: bold;
 }  */
+
+.radiocontroller {
+    display: flex;
+}
+  
+.radio {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}

@@ -18,7 +18,9 @@
   width: 50%; /* Largura do conteúdo do modal */
   border-radius: 10px; 
 }
-
+.login{
+  text-align: center;
+}
 .close-button {
   color: #aaa;
   float: right;
