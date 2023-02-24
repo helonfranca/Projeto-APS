@@ -106,44 +106,27 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </div>
             </div>
 
-            <!-- Modal Verificar autor -->
+          
+             <!-- Modal Verficar Autor -->
             <div id="modal3" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
-                        <div class="fora-form">
-                            <form method="post" action="">
-                                <div class="dentro-form">
-                                    <h1>Dados Autor</h1></br>
-                                    <div class= "form-dados">
-                                    <label for="nome">Nome do Autor:</label></br>
-                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
-                                        <label for="CurriculoLattes">Curriculo-lattes:</label></br>
-                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
-                                        <label for="Instituição">Instituição:</label></br>
-                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
-                                        Sexo:</br>
-                                        <div class="radiocontroller">
-                                            <label for="feminino" class="radio">
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino">Feminino</label>
-                                            <label for="masculino" class="radio">
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino">Masculino</label></br></br>                                           
-                                        </div>
-                                        <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
-                                    </div>
-                                    <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" class="cancel-button3" data-modal-id="modal3">Cancelar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <dl class="row">
+                            <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt></br></br>
+                            <dt class="col-sm-3">Nome: <span id="NomeAutor"></span></dt>
+                            <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt>
+                            <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt>
+                            <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt>
+                            <dt class="col-sm-3">Curriculo: <span id="DataNasc"></span></dt>
+                            <dt class="col-sm-3">Curriculo: <span id="Sexo"></span></dt>
+                           
+                        </dl>
                     </div>
+                    
                 </div>
             </div>
 
+ 
             <!-- Modal Editar autor-->
             <div id="modal4" style="display: none;">
                 <div id="modal" class="modal">
