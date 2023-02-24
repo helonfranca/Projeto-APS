@@ -134,6 +134,27 @@ class Autor extends Pessoa{
     }
 
     
+    public static function buscarAutor(int $id){
+
+        $conn = conexaoDB::conexao();
+
+        $sql = 'SELECT * FROM autor WHERE Autor_ID =?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $id);        
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+      
+        return $resultado;
+       // while($row = $stmt ->fetchObject('Autor')){
+         //   $resultado[] = $row;
+        //}
+
+
+     
+    }
 
 
 
