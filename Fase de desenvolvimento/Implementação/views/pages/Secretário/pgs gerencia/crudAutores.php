@@ -234,6 +234,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </table>
             </div>
         </section>
+        
+        <script src="../../../views/js/functions.js"></script> 
 
         <script src="../../../js/jquery-3.6.0.min.js"></script> 
         <script>
