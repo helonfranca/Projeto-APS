@@ -1,7 +1,7 @@
 <?php
-require_once("model/Pessoa.php");
-require_once("model/Autor.php");
-require_once("model/conexaoDB.php");
+require_once("../model/Pessoa.php");
+require_once("../model/Autor.php");
+require_once("../model/conexaoDB.php");
 
 class GerenciamentoAutor{
 
@@ -22,17 +22,16 @@ class GerenciamentoAutor{
         $this->cadastro->setDataDeNascimento(date('Y-m-d',strtotime($_POST['DataDeNascimento'])));
         $result = $this->incluir();
         if($result >= 1){
-            echo "<script>alert('Registro incluído com sucesso!');document.location='/lista'</script>";
+            header("location: /lista?result=1");
+            exit();
         }else{
-            echo "<script>alert('Erro ao gravar registro!, verifique se o livro não está duplicado');history.back()</script>";
+            header("location: /lista?result=0");
+            exit();
         }
     }
 
     public function incluir(){
-        
-
         return $this->cadastro->CadastrarAutor($this->cadastro->getNome(),$this->cadastro->getTelefone(),$this->cadastro->getDataDeNascimento(),$this->cadastro->getSexo(),$this->cadastro->getCurriculoLattes(), $this->cadastro->getInstituicao());
-
     }
 
 }

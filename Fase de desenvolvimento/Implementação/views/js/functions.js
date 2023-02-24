@@ -1,5 +1,3 @@
-
-
 function setAutorIdRemover(id_autor) {
     document.getElementById("id_autor_remover").value = id_autor;
 }
@@ -27,10 +25,9 @@ async function visUsuario(id) {
 }
 
 async function editUsuario(id) {
-    //console.log("Acessou: " + id);
+
     const dados = await fetch('controller/BuscaAutorController.php?id=' + id);
     const resposta = await dados.json();
-    console.log(resposta);
 
     if (resposta['status']){
         document.getElementById("id").value = resposta['dados'].Autor_ID;
@@ -47,9 +44,7 @@ async function editUsuario(id) {
                 select.selectedIndex = i;
                 break;
             }
-            }
-
-
+        }
 
     }else{
         document.getElementById("msgAlerta").innerHTML = resposta['msg'];

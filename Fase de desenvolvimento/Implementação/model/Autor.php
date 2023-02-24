@@ -153,13 +153,27 @@ class Autor extends Pessoa{
      
     }
 
+    public function editarAutor($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao, $id){
+        $this->conn = conexaoDB::conexao();
 
+        $sql = 'UPDATE autor SET Nome = :nome, Telefone = :telefone , Instituição = :instituicao,
+        CurriculoLattes = :curriculoLattes , DataDeNascimento = :dataDeNascimento , Sexo = :sexo WHERE Autor_ID = :id';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+        $stmt->bindParam(':telefone', $telefone, PDO::PARAM_INT);
+        $stmt->bindParam(':instituicao', $instituicao, PDO::PARAM_STR);
+        $stmt->bindParam(':curriculoLattes', $CurriculoLattes, PDO::PARAM_STR);
+        $stmt->bindParam(':dataDeNascimento', $DataDeNascimento);
+        $stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        if ($stmt->execute() == true) {
+            return true ;
+        } else {
+            return false;
+        }
 
+    }
 
-
-
-    
- 
 }
 
 

@@ -107,19 +107,18 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
 
           
-             <!-- Modal Verficar Autor -->
+            <!-- Modal Verficar Autor -->
             <div id="modal3" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
-                        <dl class="row">
-                            <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt></br></br>
-                            <dt class="col-sm-3">Nome: <span id="NomeAutor"></span></dt>
-                            <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt>
-                            <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt>
-                            <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt>
-                            <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt>
-                            <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt>
-                           
+                        <dl class="row" style=" display: flex; align-items: center; flex-direction: column;">
+                            <dt class="col-sm-3">Nome: <span id="NomeAutor"></span></dt></br>
+                            <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt></br>
+                            <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt></br>
+                            <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt></br>
+                            <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt></br>
+                            <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt></br>
+                            <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt>
                         </dl>
                     </div>
                     
@@ -132,12 +131,11 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../../../controller/UpdateAutorController.php">
                                 <div class="dentro-form">
                                     <h1>Editar Autor</h1></br>
                                     <div class= "form-dados">
                                         <input type="hidden" name="id" id="id" value="">
-
                                         <label for="nome">Nome do Autor:</label></br>
                                         <input type="text" id="editNome" name="editNome" placeholder="" required></br>
                                         <label for="DataDeNascimento">Data de Nascimento:</label></br>
@@ -242,60 +240,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         </section>
         
         <script src="views/js/functions.js"></script> 
-
         <script src="views/js/jquery-3.6.0.min.js"></script> 
-        <script>
-            $(document).ready(function(){
-                $("#btn1").click(function(){
-                    $("#modal1").show();
-                });              
-                $("#cancel-button1").click(function(){
-                    $("#modal1").hide();
-                });
-                $("#btn2").click(function(){
-                    $("#modal2").show();
-                });              
-                $("#cancel-button2").click(function(){
-                    $("#modal2").hide();
-                });
-                $(".btn3").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).show(); // mostra o modal correspondente
-                });
-
-                $(".btn4").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).show();
-                });
-
-                $(".btn5").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).show(); 
-                });
-
-                $(".cancel-button3").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).hide(); // vai fechar o modal correspondente
-                });
-                
-                $(".cancel-button4").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).hide(); 
-                });
-
-                $(".cancel-button5").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).hide(); 
-                });
-            });
-
-        </script>
-
-        <script>
-            function setAutorIdRemover(id_autor) {
-                document.getElementById("id_autor_remover").value = id_autor;
-            }
-        </script>  
+        <script src="views/js/functionsmodais.js"></script>
 
         <footer>
             <div class="wrapper">
