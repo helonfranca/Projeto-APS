@@ -224,8 +224,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <td><?= $linha->Instituição ?></td>
                                     <td><?= $linha->Telefone ?></td>
                                     <td>
-                                        <button type="button" data-modal-id="modal3" class="btn3">Verificar</button>
-                                        <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
+                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Visualizar</button>                                         <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
                                         <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
                                     </td>
                                 </tr>
