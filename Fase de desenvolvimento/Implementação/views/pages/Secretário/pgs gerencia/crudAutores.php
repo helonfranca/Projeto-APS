@@ -88,9 +88,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
                                         <label for="sexo">Sexo:</label></br>
                                         <select name="sexo" id="sexo">
-                                            <option value="valor1" id="sexo" name="sexo">Masculino</option>
-                                            <option value="valor2" selected id="sexo" name="sexo">Feminino</option>
-                                            <option value="valor3" id="sexo" name="sexo">Prefiro não dizer</option>
+                                            <option value="Masculino" id="opsexo" name="opsexo">Masculino</option>
+                                            <option value="Feminino" selected id="opsexo" name="opsexo">Feminino</option>
+                                            <option value="Prefiro não dizer" id="opsexo" name="opsexo">Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
@@ -136,22 +136,24 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                 <div class="dentro-form">
                                     <h1>Editar Autor</h1></br>
                                     <div class= "form-dados">
-                                    <label for="nome">Nome do Autor:</label></br>
-                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
+                                        <input type="hidden" name="id" id="id" value="">
+
+                                        <label for="nome">Nome do Autor:</label></br>
+                                        <input type="text" id="editNome" name="editNome" placeholder="" required></br>
                                         <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <input type="date" id="editDataDeNascimento" name="editDataDeNascimento" placeholder="" required></br>
                                         <label for="CurriculoLattes">Curriculo-lattes:</label></br>
-                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
+                                        <input type="text" id="editCurriculoLattes" name="editCurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
-                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
+                                        <input type="text" id="editInstituicao" name="editinstituicao" placeholder="" required></br>
                                         <label for="sexo">Sexo:</label></br>
-                                        <select name="select">
-                                            <option value="valor1">Masculino</option>
-                                            <option value="valor2" selected>Feminino</option>
-                                            <option value="valor3">Prefiro não dizer</option>
+                                        <select id="editsexo" name="editsexo" >
+                                            <option value="Masculino" >Masculino</option>
+                                            <option value="Feminino">Feminino</option>
+                                            <option value="Prefiro não dizer" >Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
+                                        <input type="number" id="editTelefone" name="editTelefone" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit" >Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -224,8 +226,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <td><?= $linha->Instituição ?></td>
                                     <td><?= $linha->Telefone ?></td>
                                     <td>
-                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
-                                        <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
+
+                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
+                                    
+                                    <button type="button" data-modal-id="modal4" class="btn4" onclick="editUsuario(id)" id="<?= $linha->Autor_ID ?>">Editar</button>
+                                        
+                                    <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
                                     </td>
                                 </tr>
                             <?php endforeach;

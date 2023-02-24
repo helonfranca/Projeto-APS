@@ -19,7 +19,6 @@ async function visUsuario(id) {
         document.getElementById("Sexo").innerHTML = resposta['dados'].Sexo;
 
 
-
     }else{
         document.getElementById("msgAlerta").innerHTML = resposta['msg'];
     }
@@ -35,11 +34,21 @@ async function editUsuario(id) {
 
     if (resposta['status']){
         document.getElementById("id").value = resposta['dados'].Autor_ID;
-        document.getElementById("editnome").value = resposta['dados'].Nome;
+        document.getElementById("editNome").value = resposta['dados'].Nome;
         document.getElementById("editTelefone").value = resposta['dados'].Telefone;
-        document.getElementById("editInstituicaoAutor").value = resposta['dados'].Instituição;
-        document.getElementById("editCurriculoAutor").value = resposta['dados'].CurriculoLattes;
-        document.getElementById("editDataNasc").value = resposta['dados'].DataDeNascimento;
+        document.getElementById("editInstituicao").value = resposta['dados'].Instituição;
+        document.getElementById("editCurriculoLattes").value = resposta['dados'].CurriculoLattes;
+        document.getElementById("editDataDeNascimento").value = resposta['dados'].DataDeNascimento;
+        var text = resposta['dados'].Sexo;
+
+        var select = document.querySelector('#editsexo');
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].text == text) {
+                select.selectedIndex = i;
+                break;
+            }
+            }
+
 
 
     }else{
