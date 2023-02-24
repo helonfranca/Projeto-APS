@@ -110,10 +110,7 @@ class Autor extends Pessoa{
         $stmt->execute();
         $resultado = array();
 
-        while($row = $stmt ->fetchObject('Autor')){
-            $resultado[] = $row;
-        }
-
+        $resultado = $stmt->fetchAll(PDO::FETCH_CLASS);
 
         if(!$resultado){
             throw new Exception("Não foi encontrado nenhum registro");

@@ -16,7 +16,7 @@ async function visUsuario(id) {
         document.getElementById("InstituicaoAutor").innerHTML = resposta['dados'].Instituição;
         document.getElementById("CurriculoAutor").innerHTML = resposta['dados'].CurriculoLattes;
         document.getElementById("DataNasc").innerHTML = resposta['dados'].DataDeNascimento;
-        document.getElementById("Sexo").value = resposta['dados'].Sexo;
+        document.getElementById("Sexo").innerHTML = resposta['dados'].Sexo;
 
 
 

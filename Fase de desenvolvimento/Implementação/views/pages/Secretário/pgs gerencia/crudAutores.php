@@ -21,9 +21,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/stylecrud.css">
-        <link rel="stylesheet" href="../../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stylecrud.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         
         <title>Biblioteca Científica Digital</title>
     </head>
@@ -31,7 +31,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="indexSecretário.html"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
@@ -87,10 +87,10 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
                                         <label for="sexo">Sexo:</label></br>
-                                        <select name="select">
-                                            <option value="valor1">Masculino</option>
-                                            <option value="valor2" selected>Feminino</option>
-                                            <option value="valor3">Prefiro não dizer</option>
+                                        <select name="sexo" id="sexo">
+                                            <option value="valor1" id="sexo" name="sexo">Masculino</option>
+                                            <option value="valor2" selected id="sexo" name="sexo">Feminino</option>
+                                            <option value="valor3" id="sexo" name="sexo">Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
@@ -117,8 +117,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                             <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt>
                             <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt>
                             <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt>
-                            <dt class="col-sm-3">Curriculo: <span id="DataNasc"></span></dt>
-                            <dt class="col-sm-3">Curriculo: <span id="Sexo"></span></dt>
+                            <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt>
+                            <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt>
                            
                         </dl>
                     </div>
@@ -224,7 +224,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <td><?= $linha->Instituição ?></td>
                                     <td><?= $linha->Telefone ?></td>
                                     <td>
-                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Visualizar</button>                                         <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
+                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
                                         <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
                                     </td>
                                 </tr>
@@ -235,9 +235,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
         </section>
         
-        <script src="../../../views/js/functions.js"></script> 
+        <script src="views/js/functions.js"></script> 
 
-        <script src="../../../js/jquery-3.6.0.min.js"></script> 
+        <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
                 $("#btn1").click(function(){

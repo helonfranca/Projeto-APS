@@ -1,7 +1,7 @@
 <?php
-require_once("../model/Pessoa.php");
-require_once("../model/Autor.php");
-require_once("../model/conexaoDB.php");
+require_once("model/Pessoa.php");
+require_once("model/Autor.php");
+require_once("model/conexaoDB.php");
 
 class GerenciamentoAutor{
 
@@ -22,7 +22,7 @@ class GerenciamentoAutor{
         $this->cadastro->setDataDeNascimento(date('Y-m-d',strtotime($_POST['DataDeNascimento'])));
         $result = $this->incluir();
         if($result >= 1){
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../views/pages/Secretário/pgs gerencia/crudAutores.php'</script>";
+            echo "<script>alert('Registro incluído com sucesso!');document.location='/lista'</script>";
         }else{
             echo "<script>alert('Erro ao gravar registro!, verifique se o livro não está duplicado');history.back()</script>";
         }
