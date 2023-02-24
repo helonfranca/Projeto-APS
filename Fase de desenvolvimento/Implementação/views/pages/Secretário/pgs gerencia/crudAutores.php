@@ -294,7 +294,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>

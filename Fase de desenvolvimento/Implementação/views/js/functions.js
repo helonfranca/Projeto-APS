@@ -46,11 +46,6 @@ async function editUsuario(id) {
         document.getElementById("msgAlerta").innerHTML = resposta['msg'];
     }
 
-    
-     
-    
-
-
 
     
 

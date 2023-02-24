@@ -1,7 +1,7 @@
 <?php
   
-require_once("../model/Pessoa.php");
-require_once("../model/Autor.php");
+require_once("model/Pessoa.php");
+require_once("model/Autor.php");
 
 class DeletarAutorController{
     
@@ -16,16 +16,16 @@ class DeletarAutorController{
     {   
         $id = ($_POST['id_autor']);
         if ($id === null || $id === false) {
-            header("location: ../views/pages/Secretário/pgs%20gerencia/crudAutores.php?result=0");
+            header("location:/lista");
             exit();
         }
 
         $success = $this->dlt->deletarAutor($id);
         if ($success === false) {
-            header("location: ../views/pages/Secretário/pgs%20gerencia/crudAutores.php?result=0");
+            header("location: /lista");
             exit();
         } else {
-            header("location: ../views/pages/Secretário/pgs%20gerencia/crudAutores.php?result=1");
+            header("location: /lista");
             exit();
         } 
 
