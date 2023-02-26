@@ -7,6 +7,16 @@ class HomeController
         include 'views\pages\home.php';    
     }
 
+    public static function login()
+    {
+        include 'LoginController.php';    
+    }
+
+    public static function logout()
+    {
+        include 'LogoutController.php';    
+    }
+
     public static function menuAdm()
     {
         include 'views\pages\administrador\menuAdm.php';
@@ -35,6 +45,11 @@ class HomeController
     public static function remover()
     {
         include 'DeletarAutorController.php';            
+    }
+
+    public static function busca()
+    {
+        include 'BuscaAutorController.php';            
     }
 
     public static function PagOrganizadores()
