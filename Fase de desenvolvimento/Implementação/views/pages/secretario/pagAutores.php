@@ -1,17 +1,13 @@
 <?php
 
-require_once("../../../../controller/verificarAutor.php");
+require_once("controller/verificarAutor.php");
 
-/*
 session_start();
 
 if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
-    header("Location: ../index.php");
+    header("Location: /");
     exit();
 }
-*/
-
-
 
 ?>
 
@@ -21,9 +17,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/stylecrud.css">
-        <link rel="stylesheet" href="../../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stylecrud.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         
         <title>Biblioteca Científica Digital</title>
     </head>
@@ -31,18 +27,20 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
                         <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
                         <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/home">Menu</a>
                     </nav>
                 </div>
 
                 <div class= "login">
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
@@ -55,7 +53,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../../controller/LogoutController.php">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
@@ -74,7 +72,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" name="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../../controller/GerenciamentoAutor.php">
+                            <form method="post" action="/autor/form/save">
                                 <div class="dentro-form">
                                     <h1>Adicionar novo autor</h1></br>
                                     <div class= "form-dados">
@@ -86,13 +84,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
-                                        Sexo:</br>
-                                        <div class="radiocontroller">
-                                            <label for="feminino" class="radio">
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino">Feminino</label>
-                                            <label for="masculino" class="radio">
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino">Masculino</label></br></br>                                           
-                                        </div>
+                                        <label for="sexo">Sexo:</label></br>
+                                        <select name="sexo" id="sexo">
+                                            <option value="Masculino" id="opsexo" name="opsexo">Masculino</option>
+                                            <option value="Feminino" selected id="opsexo" name="opsexo">Feminino</option>
+                                            <option value="Prefiro não dizer" id="opsexo" name="opsexo">Prefiro não dizer</option>
+                                        </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
                                     </div>
@@ -107,69 +104,52 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </div>
             </div>
 
-            <!-- Modal Verificar autor -->
+          
+            <!-- Modal Verficar Autor -->
             <div id="modal3" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
-                        <div class="fora-form">
-                            <form method="post" action="">
-                                <div class="dentro-form">
-                                    <h1>Dados Autor</h1></br>
-                                    <div class= "form-dados">
-                                    <label for="nome">Nome do Autor:</label></br>
-                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
-                                        <label for="CurriculoLattes">Curriculo-lattes:</label></br>
-                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
-                                        <label for="Instituição">Instituição:</label></br>
-                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
-                                        Sexo:</br>
-                                        <div class="radiocontroller">
-                                            <label for="feminino" class="radio">
-                                            <input type="radio" id="Feminino" name="sexo" value="feminino">Feminino</label>
-                                            <label for="masculino" class="radio">
-                                            <input type="radio" id="Masculino" name="sexo" value="masculino">Masculino</label></br></br>                                           
-                                        </div>
-                                        <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
-                                    </div>
-                                    <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" class="cancel-button3" data-modal-id="modal3">Cancelar</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                        <dl class="row" style=" display: flex; align-items: center; flex-direction: column;">
+                            <dt class="col-sm-3">Nome: <span id="NomeAutor"></span></dt></br>
+                            <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt></br>
+                            <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt></br>
+                            <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt></br>
+                            <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt></br>
+                            <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt></br>
+                            <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt>
+                        </dl>
                     </div>
+                    
                 </div>
             </div>
 
+ 
             <!-- Modal Editar autor-->
             <div id="modal4" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="/autor/form/editar">
                                 <div class="dentro-form">
                                     <h1>Editar Autor</h1></br>
                                     <div class= "form-dados">
-                                    <label for="nome">Nome do Autor:</label></br>
-                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
+                                        <input type="hidden" name="id" id="id" value="">
+                                        <label for="nome">Nome do Autor:</label></br>
+                                        <input type="text" id="editNome" name="editNome" placeholder="" required></br>
                                         <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <input type="date" id="editDataDeNascimento" name="editDataDeNascimento" placeholder="" required></br>
                                         <label for="CurriculoLattes">Curriculo-lattes:</label></br>
-                                        <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
+                                        <input type="text" id="editCurriculoLattes" name="editCurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
-                                        <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
+                                        <input type="text" id="editInstituicao" name="editinstituicao" placeholder="" required></br>
                                         <label for="sexo">Sexo:</label></br>
-                                        <select name="select">
-                                            <option value="valor1">Masculino</option>
-                                            <option value="valor2" selected>Feminino</option>
-                                            <option value="valor3">Prefiro não dizer</option>
+                                        <select id="editsexo" name="editsexo" >
+                                            <option value="Masculino" >Masculino</option>
+                                            <option value="Feminino">Feminino</option>
+                                            <option value="Prefiro não dizer" >Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
+                                        <input type="number" id="editTelefone" name="editTelefone" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit" >Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -212,16 +192,13 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <button id = "btn2" name="btn2">Adicionar novo autor</button> 
             </div>      
                 
-            <div class="container_table"> 
-               <!--Caixa inteira...-->
-                <!--MENU-->
-
+            <div class="container_table">
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Eventos</a></div> 
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Autores</a></div>   
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Artigos</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/organizadores">Gerenciar Organizadores</a></div>  
+                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/autores">Gerenciar Autores</a></div>   
+                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Artigos</a></div>
                     </div>
                 </div>
                     
@@ -242,9 +219,12 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <td><?= $linha->Instituição ?></td>
                                     <td><?= $linha->Telefone ?></td>
                                     <td>
-                                        <button type="button" data-modal-id="modal3" class="btn3">Verificar</button>
-                                        <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
-                                        <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
+
+                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
+                                    
+                                    <button type="button" data-modal-id="modal4" class="btn4" onclick="editUsuario(id)" id="<?= $linha->Autor_ID ?>">Editar</button>
+                                        
+                                    <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
                                     </td>
                                 </tr>
                             <?php endforeach;
@@ -253,65 +233,15 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </table>
             </div>
         </section>
-
-        <script src="../../../js/jquery-3.6.0.min.js"></script> 
-        <script>
-            $(document).ready(function(){
-                $("#btn1").click(function(){
-                    $("#modal1").show();
-                });              
-                $("#cancel-button1").click(function(){
-                    $("#modal1").hide();
-                });
-                $("#btn2").click(function(){
-                    $("#modal2").show();
-                });              
-                $("#cancel-button2").click(function(){
-                    $("#modal2").hide();
-                });
-                $(".btn3").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).show(); // mostra o modal correspondente
-                });
-
-                $(".btn4").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).show();
-                });
-
-                $(".btn5").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).show(); 
-                });
-
-                $(".cancel-button3").click(function(){
-                var modalId = $(this).data("modal-id"); // obtem o ID do modal a partir do botão
-                $("#"+modalId).hide(); // vai fechar o modal correspondente
-                });
-                
-                $(".cancel-button4").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).hide(); 
-                });
-
-                $(".cancel-button5").click(function(){
-                var modalId = $(this).data("modal-id"); 
-                $("#"+modalId).hide(); 
-                });
-            });
-
-        </script>
-
-        <script>
-            function setAutorIdRemover(id_autor) {
-                document.getElementById("id_autor_remover").value = id_autor;
-            }
-        </script>  
+        
+        <script src="views/js/functions.js"></script> 
+        <script src="views/js/jquery-3.6.0.min.js"></script> 
+        <script src="views/js/functionsmodais.js"></script>
 
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>

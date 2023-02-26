@@ -1,46 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+session_start(); // deve ser chamado antes de qualquer saída HTML
+ 
+if (isset($_SESSION['tipo_usuario'])) {
+    switch ($_SESSION['tipo_usuario']) {
+        case "1": 
+            header("Location: /homeAdm");
+            exit();
+        case "2": 
+            header("Location: /home");
+            exit();
+        default: 
+            header("Location: /");
+            exit();
+    }
+}
+?><!DOCTYPE html>
+<html lang="pt">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../css/style.css">
-        <link rel="stylesheet" href="../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         <title>Biblioteca Científica Digital</title>
     </head>
 
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
-                        <a href="IndexSecretário.html#Sobre">Sobre</a>
-                        <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
-                        <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
+                        <a href="#Sobre">Sobre</a>
+                        <a href="#Colaborador">Quero ser colaborador</a>
+                        <a href="#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
                     </nav>
                 </div>
 
                 <div class= "login">
-                    <button id="btn1">Sair</button>
+                    <button id="btn1">Entrar</button>
                 </div> 
                   
             <div>
         </header>  
 
         <section>
-            <!-- Modal de Logout -->
             <div id="modal1" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../controller/LoginController.php">
                                 <div class="dentro-form">
-                                    <h2>Deseja Sair do Sitema?</h2></br>
+                                    <h2>Área de gerenciamento</h2></br>
+                                    <h3>Insira suas credenciais:</h3></br>
+                                    <div class= "form-dados">
+                                        <label for="Email">Email:</label></br>
+                                        <input type="email" id="email" name="email" placeholder="Exemplo@gmail.com" required>
+                                        </br>
+                                        <label for="password">Senha:</label></br>
+                                        <input type="password" id="senha" name="senha" placeholder="Senha" required>
+                                    </div>
+                                    <?php
+                                        if (isset($_SESSION['login_erro'])) { // verifica se a variável de sessão existe
+                                            echo '<div style="color: red;">' . $_SESSION['login_erro'] . '</div>'; // exibe a mensagem de erro
+                                            unset($_SESSION['login_erro']); // remove a variável de sessão
+                                        }
+                                    ?>
+                                    </br></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="submit" submit="">Confirmar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button type="button" id="cancel-button1">Cancelar</button>
                                     </div>
                                 </div>
@@ -86,30 +115,25 @@
                         </br></br></br></br></br></br>
                     </div>
                 </div>
-            </div>  
+            </div>   
         </section>
 
-        
-        <script src="../../js/jquery-3.6.0.min.js"></script>  
+        <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
                 $("#btn1").click(function(){
                     $("#modal1").show();
                 });              
-                $("#confirmar1").click(function(){
-                    alert("Confirmado Modal 1");
-                    $("#modal1").hide();
-                });
                 $("#cancel-button1").click(function(){
                     $("#modal1").hide();
                 });
             });        
-        </script>
+        </script> 
 
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>
@@ -118,3 +142,4 @@
         </footer>
     </body>
 </html>
+

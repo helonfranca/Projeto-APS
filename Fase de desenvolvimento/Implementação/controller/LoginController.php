@@ -24,10 +24,10 @@ Class LoginController{
             if ($usuario->autenticarUsuario($email, $senha)){
                 switch ($_SESSION['tipo_usuario']) {
                 case "1": 
-                    header("location: ../views/pages/adm/MenuAdm.php");
+                    header("location: /homeAdm");
                     exit();
                 case "2": 
-                    header("location: ../views/pages/Secretário/MenuSecretário.php");
+                    header("location: /home");
                     exit();
                 default: 
                     break;

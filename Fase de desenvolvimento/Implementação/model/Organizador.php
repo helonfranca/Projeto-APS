@@ -2,10 +2,11 @@
 
 require_once("conexaoDB.php");
 
-
-class Autor extends Pessoa{
+class Organizador extends Pessoa{
 
     private $conn;
+    private $cpf;
+
     /** Get the value of id     */ 
     public function getId()
     {
@@ -75,22 +76,34 @@ class Autor extends Pessoa{
 
     }
 
+    public function getCpf()
+    {
+        return $this->cpf;
+    }
 
-    public function CadastrarAutor($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao)
+    public function setCpf($cpf)
+    {
+        $this->cpf = $cpf;
+
+    }
+
+
+    public function cadastrarOrganizador($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao, $cpf)
         {
           
             //$db = new conexaoDb();
            // $this->conn = $db->conexao();
             $this->conn = conexaoDB::conexao();
 
-            $stmt = $this->conn->prepare("INSERT INTO autor (Nome, Telefone, Instituição, CurriculoLattes, DataDeNascimento, Sexo) 
-            VALUES (?,?,?,?,?,?)");
+            $stmt = $this->conn->prepare("INSERT INTO organizador (Nome, Telefone, Instituição, CurriculoLattes, DataDeNascimento, Sexo, Cpf) 
+            VALUES (?,?,?,?,?,?,?)");
             $stmt->bindParam(1, $nome, PDO::PARAM_STR);
             $stmt->bindParam(2, $telefone, PDO::PARAM_INT);
             $stmt->bindParam(3, $instituicao, PDO::PARAM_STR);
             $stmt->bindParam(4, $CurriculoLattes, PDO::PARAM_STR);
             $stmt->bindParam(5, $DataDeNascimento);
             $stmt->bindParam(6, $sexo, PDO::PARAM_STR);
+            $stmt->bindParam(7, $cpf, PDO::PARAM_STR);
 
             if ($stmt->execute() == true) {
                 return true ;
@@ -99,11 +112,11 @@ class Autor extends Pessoa{
             }
         }
 
-    public static function verificarAutor()
+    public static function verificarOrganizador()
     {
         $conn = conexaoDB::conexao();
 
-        $stmt = "SELECT * FROM autor ORDER BY Autor_ID DESC";
+        $stmt = "SELECT * FROM organizador ORDER BY Organizador_ID DESC";
 
         $stmt = $conn->prepare($stmt);
 
@@ -119,64 +132,5 @@ class Autor extends Pessoa{
         return $resultado;
     }
 
-    public static function deletarAutor(int $id): bool{
-
-        $conn = conexaoDB::conexao();
-
-        $sql = 'DELETE FROM autor WHERE Autor_ID = ?';
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(1, $id);
-
-        return $stmt->execute();
-    }
-
     
-    public static function buscarAutor(int $id){
-
-        $conn = conexaoDB::conexao();
-
-        $sql = 'SELECT * FROM autor WHERE Autor_ID =?';
-        $stmt = $conn->prepare($sql);
-        $stmt->bindValue(1, $id);        
-
-        $stmt->execute();
-
-        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-        
-      
-        return $resultado;
-       // while($row = $stmt ->fetchObject('Autor')){
-         //   $resultado[] = $row;
-        //}
-
-
-     
-    }
-
-    public function editarAutor($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao, $id){
-        $this->conn = conexaoDB::conexao();
-
-        $sql = 'UPDATE autor SET Nome = :nome, Telefone = :telefone , Instituição = :instituicao,
-        CurriculoLattes = :curriculoLattes , DataDeNascimento = :dataDeNascimento , Sexo = :sexo WHERE Autor_ID = :id';
-        $stmt = $this->conn->prepare($sql);
-        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-        $stmt->bindParam(':telefone', $telefone, PDO::PARAM_INT);
-        $stmt->bindParam(':instituicao', $instituicao, PDO::PARAM_STR);
-        $stmt->bindParam(':curriculoLattes', $CurriculoLattes, PDO::PARAM_STR);
-        $stmt->bindParam(':dataDeNascimento', $DataDeNascimento);
-        $stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
-        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
-        if ($stmt->execute() == true) {
-            return true ;
-        } else {
-            return false;
-        }
-
-    }
-
 }
-
-
-
-
-
