@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
-    header("Location: ../index.php");
+    header("Location: /");
     exit();
 }
 ?>
@@ -12,22 +12,22 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../css/stylepagSecretário.css">
-        <link rel="stylesheet" href="../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/stylepagSecretário.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         <title>Biblioteca Científica Digital</title>
     </head>
 
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="indexSecretário.html">Sobre</a>
                         <a href="indexSecretário.html">Quero ser colaborador</a>
                         <a href="indexSecretário.html">Submeta seu artigo</a>
                         <a href="indexSecretário.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/home">Menu</a>
                     </nav>
                 </div>
 
@@ -70,15 +70,15 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                         </div>
                         </br>
                         <div class="dentro_bloco" href="www.google.com">
-                            <a href="google.com"><h3>Gerenciar Organizadores</h3></a>
+                            <a href="/organizadores"><h3>Gerenciar Organizadores</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco" href="www.google.com">
                             <a href="google.com"><h3>Gerenciar Artigos</h3></a>
                         </div>
                         </br>
-                        <div class="dentro_bloco" href="www.google.com">
-                            <a href="google.com"><h3>Gerenciar Autores</h3></a>
+                        <div class="dentro_bloco">
+                            <a href="/autores"><h3>Gerenciar Autores</h3></a>
                         </div>
                         </br></br></br>
                     </div>
@@ -87,7 +87,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         </section>
 
         
-        <script src="../../js/jquery-3.6.0.min.js"></script> 
+        <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
                 $("#btn1").click(function(){
@@ -106,7 +106,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>

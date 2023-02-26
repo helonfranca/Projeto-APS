@@ -8,23 +8,44 @@ switch($url)
 
 {
     case '/':
-        echo "pagina inicial";
-    break;
-
-    case '/pessoa':
         HomeController::index();
     break;
 
-    case '/lista':
-        HomeController::lista();
+    case '/homeAdm':
+        HomeController::menuAdm();
+    break;
+
+    case '/home':
+        HomeController::menuSecretario();
+    break;
+
+    case '/autores':
+        HomeController::PagAutores();
     break;
 
     case '/autor/form/save':
-        HomeController::save();
+        HomeController::saveAutor();
+    break;
+
+    case '/autor/form/editar':
+        HomeController::editar();
+    break;
+
+    case '/autor/form/remover':
+        HomeController::remover();
+    break;
+
+    case '/organizadores':
+        HomeController::PagOrganizadores();
+    break;
+
+    case '/organizador/form/save':
+        HomeController::saveOrganizador();
     break;
 
     default:
-        echo "Erro 404";
+        echo "<h1  style = 'position: absolute; top: 50%; left: 50%; margin-right: -50%;
+        transform: translate(-50%, -50%)'>Erro 404: Desculpe, página não encontrada. :/ </h1>";
     break;
 
 }

@@ -1,7 +1,7 @@
 <?php
   
-require_once("../model/Pessoa.php");
-require_once("../model/Autor.php");
+require_once("model/Pessoa.php");
+require_once("model/Autor.php");
 
 class UptadeAutorController{  
     private $upt;
@@ -22,10 +22,10 @@ class UptadeAutorController{
         $this->upt->setDataDeNascimento(date('Y-m-d',strtotime($_POST['editDataDeNascimento'])));
         $result = $this->incluir();
         if ($result >= 1) {
-            header("location: /lista?result=1");
+            header("location: /autores?result=1");
             exit();
         } else {
-            header("location: /lista?result=0");
+            header("location: /autores?result=0");
             exit();
         }
     }

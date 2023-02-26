@@ -37,6 +37,7 @@ class Usuario extends Pessoa{
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $usuario = $stmt->fetch();
+        var_dump($usuario);
         if($usuario && password_verify($senha, $usuario['Senha'])) {
             $_SESSION['tipo_usuario'] = $usuario['Perfil_id_fk'];
             $_SESSION['nome_usuario'] = $usuario['Nome'];
@@ -45,7 +46,7 @@ class Usuario extends Pessoa{
         }
         else{
             $_SESSION['login_erro'] = "Email ou senha incorretos!";
-            header("Location: ../views/pages/index.php?login_erro=1");
+            header("Location: /?login_erro=1");
             exit();
         }
     }
@@ -53,7 +54,7 @@ class Usuario extends Pessoa{
     public function logout() {
         session_start();
         session_destroy();
-        header("location: ../views/pages/index.php");
+        header("location: /");
         exit();
     }
 

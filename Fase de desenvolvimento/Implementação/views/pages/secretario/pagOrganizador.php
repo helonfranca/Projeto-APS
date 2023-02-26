@@ -1,20 +1,15 @@
 <?php
 
-require_once("controller/verificarAutor.php");
+require_once("controller/controllerOrganizador/verificarOrganizador.php");
 
-/*
-session_start();
+// session_start();
 
-if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
-    header("Location: ../index.php");
-    exit();
-}
-*/
-
-
+// if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
+//     header("Location: /");
+//     exit();
+// }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -31,18 +26,20 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
                         <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
                         <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/home">Menu</a>
                     </nav>
                 </div>
 
                 <div class= "login">
+                    <!-- <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>  -->
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
@@ -55,7 +52,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="../../../controller/LogoutController.php">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
@@ -69,16 +66,16 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 </div>
             </div>
 
-            <!-- Modal Adicionar Autores -->
+            <!-- Modal Adicionar Organizadores -->
             <div id="modal2" name="modal2" style="display: none; ">
                 <div id="modal" name="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../../controller/GerenciamentoAutor.php">
+                            <form method="post" action="/organizador/form/save">
                                 <div class="dentro-form">
-                                    <h1>Adicionar novo autor</h1></br>
+                                    <h1>Adicionar novo organizador</h1></br>
                                     <div class= "form-dados">
-                                        <label for="nome">Nome do Autor:</label></br>
+                                        <label for="nome">Nome do Organizador:</label></br>
                                         <input type="text" id="nome" name="nome" placeholder="" required></br>
                                         <label for="DataDeNascimento">Data de Nascimento:</label></br>
                                         <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
@@ -94,6 +91,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
                                         <input type="number" id="Telefone" name="telefone" placeholder=""></br>
+                                        <label for="Cpf">Cpf:</label></br>
+                                        <input type="number" id="Cpf" name="cpf" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -107,7 +106,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
 
           
-            <!-- Modal Verficar Autor -->
+            <!-- Modal Verficar Organizador -->
             <div id="modal3" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
@@ -126,17 +125,17 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
 
  
-            <!-- Modal Editar autor-->
+            <!-- Modal Editar Organizador-->
             <div id="modal4" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../../controller/UpdateAutorController.php">
+                            <form method="post" action="/autor/form/editar">
                                 <div class="dentro-form">
-                                    <h1>Editar Autor</h1></br>
+                                    <h1>Editar Organizador</h1></br>
                                     <div class= "form-dados">
                                         <input type="hidden" name="id" id="id" value="">
-                                        <label for="nome">Nome do Autor:</label></br>
+                                        <label for="nome">Nome do Organizador:</label></br>
                                         <input type="text" id="editNome" name="editNome" placeholder="" required></br>
                                         <label for="DataDeNascimento">Data de Nascimento:</label></br>
                                         <input type="date" id="editDataDeNascimento" name="editDataDeNascimento" placeholder="" required></br>
@@ -171,9 +170,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                         <div class="fora-form">
                             <form method="post" action="../../../../controller/DeletarAutorController.php">
                                 <div class="dentro-form">
-                                    <h1 style="text-align: center;">Removendo Autor</h1></br>
+                                    <h1 style="text-align: center;">Removendo Organizador</h1></br>
                                     <h2 style="text-align: center;">Aviso:</h2></br>
-                                    <h3 style="text-align: center;">Você realmente deseja apagar o Autor?</h3></br>
+                                    <h3 style="text-align: center;">Você realmente deseja apagar o Organizador?</h3></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button type="button" class="cancel-button5" data-modal-id="modal5">Cancelar</button>
@@ -187,11 +186,11 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
 
             <div class="dentro-bloco" >
-                <h3>Gerenciar Autores</h3>
+                <h3>Gerenciar Organizador</h3>
             </div>    
                 
             <div class="bt-container">
-                <button id = "btn2" name="btn2">Adicionar novo autor</button> 
+                <button id = "btn2" name="btn2">Adicionar novo organizador</button> 
             </div>      
                 
             <div class="container_table"> 
@@ -200,32 +199,32 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
 
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Eventos</a></div> 
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Autores</a></div>   
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Artigos</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/organizadores">Gerenciar Organizadores</a></div>  
+                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/autores">Gerenciar Autores</a></div>   
+                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Artigos</a></div>
                     </div>
                 </div>
                     
                 <table>
                     <thead>
                         <tr>
-                            <th>Nome do Autor</th>
+                            <th>Nome do Organizador</th>
                             <th>Instituição</th>
-                            <th>Telefone</th>
+                            <th>Cpf</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php if(isset($lista_autores) && !empty($lista_autores)):
-                            foreach ($lista_autores as $linha): ?>                        
+                        <?php if(isset($lista_organizadores) && !empty($lista_organizadores)):
+                            foreach ($lista_organizadores as $linha): ?>                        
                                 <tr>
                                     <td><?= $linha->Nome ?></td>
                                     <td><?= $linha->Instituição ?></td>
-                                    <td><?= $linha->Telefone ?></td>
+                                    <td><?= $linha->Cpf ?></td>
                                     <td>
 
-                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
+                                    <button type="button"  id="<?= $linha->Organizador_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
                                     
                                     <button type="button" data-modal-id="modal4" class="btn4" onclick="editUsuario(id)" id="<?= $linha->Autor_ID ?>">Editar</button>
                                         
