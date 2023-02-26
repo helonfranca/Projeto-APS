@@ -50,7 +50,7 @@ if (isset($_SESSION['tipo_usuario'])) {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../controller/LoginController.php">
+                            <form method="post" action="/login">
                                 <div class="dentro-form">
                                     <h2>Área de gerenciamento</h2></br>
                                     <h3>Insira suas credenciais:</h3></br>
