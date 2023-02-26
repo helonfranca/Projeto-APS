@@ -11,6 +11,14 @@ switch($url)
         HomeController::index();
     break;
 
+    case '/login':
+        HomeController::login();
+    break;
+
+    case '/logout':
+        HomeController::logout();
+    break;
+
     case '/homeAdm':
         HomeController::menuAdm();
     break;
@@ -33,6 +41,10 @@ switch($url)
 
     case '/autor/form/remover':
         HomeController::remover();
+    break;
+
+    case '/autor/form/busca':
+        HomeController::busca();
     break;
 
     case '/organizadores':
