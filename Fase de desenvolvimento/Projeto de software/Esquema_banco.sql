@@ -11,7 +11,7 @@ PRIMARY KEY (Perfil_ID)
 CREATE TABLE USUARIO(
 Usuario_ID				INT 			NOT NULL		AUTO_INCREMENT,
 Nome		 			VARCHAR(50)    	NOT NULL,
-Senha					VARCHAR(50)    	NOT NULL,
+Senha					VARCHAR(100)    NOT NULL,
 Telefone				CHAR(15) 		NOT NULL,
 DataDeNascimento		DATE			NOT NULL,
 Sexo 					CHAR(20)		NOT NULL,
