@@ -1,7 +1,7 @@
 <?php
 
-require_once("model/Pessoa.php");
-require_once("model/Autor.php");
+require_once("../model/Pessoa.php");
+require_once("../model/Autor.php");
 
 $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 

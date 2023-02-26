@@ -1,9 +1,9 @@
 <?php
 
+include_once("../model/connectionDB.php");
 include_once("../model/Usuario.php");
-
 Class LogoutController{
-   
+    private $usuario;
 
     public function __construct() {
         $this->logout();

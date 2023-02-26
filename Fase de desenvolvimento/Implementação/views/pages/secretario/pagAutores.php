@@ -53,7 +53,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="/logout">
+                            <form method="post" action="../../../controller/LogoutController.php">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
@@ -167,7 +167,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="/autor/form/remover">
+                            <form method="post" action="../../../../controller/DeletarAutorController.php">
                                 <div class="dentro-form">
                                     <h1 style="text-align: center;">Removendo Autor</h1></br>
                                     <h2 style="text-align: center;">Aviso:</h2></br>
@@ -220,7 +220,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <td><?= $linha->Telefone ?></td>
                                     <td>
 
-                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3" onclick="visUsuario(id)"> Verificar</button>                                         
+                                    <button type="button"  id="<?= $linha->Autor_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
                                     
                                     <button type="button" data-modal-id="modal4" class="btn4" onclick="editUsuario(id)" id="<?= $linha->Autor_ID ?>">Editar</button>
                                         

@@ -4,7 +4,7 @@ function setAutorIdRemover(id_autor) {
 
 async function visUsuario(id) {
     //console.log("Acessou: " + id);
-    const dados = await fetch('/autor/form/busca?id=' + id);
+    const dados = await fetch('controller/BuscaAutorController.php?id=' + id);
     const resposta = await dados.json();
     console.log(resposta);
 
@@ -26,7 +26,7 @@ async function visUsuario(id) {
 
 async function editUsuario(id) {
 
-    const dados = await fetch('/autor/form/busca?id=' + id);
+    const dados = await fetch('controller/BuscaAutorController.php?id=' + id);
     const resposta = await dados.json();
 
     if (resposta['status']){

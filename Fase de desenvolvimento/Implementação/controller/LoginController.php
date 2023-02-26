@@ -1,6 +1,7 @@
 <?php
 
-include_once("model/Usuario.php");
+include_once("../model/conexaoDB.php");
+include_once("../model/Usuario.php");
 
 Class LoginController{
     private $error = false;
