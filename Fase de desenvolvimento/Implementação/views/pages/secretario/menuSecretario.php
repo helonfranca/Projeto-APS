@@ -46,7 +46,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../controller/LogoutController.php">
+                            <form method="post" action="/logout">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">

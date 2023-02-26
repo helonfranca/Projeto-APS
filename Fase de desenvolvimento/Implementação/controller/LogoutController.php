@@ -1,9 +1,8 @@
 <?php
 
-include_once("../model/Usuario.php");
+include_once("model/Usuario.php");
 
 Class LogoutController{
-   
 
     public function __construct() {
         $this->logout();
