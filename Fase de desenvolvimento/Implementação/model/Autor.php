@@ -2,7 +2,6 @@
 
 require_once("conexaoDB.php");
 
-
 class Autor extends Pessoa{
 
     private $conn;
@@ -76,7 +75,7 @@ class Autor extends Pessoa{
     }
 
 
-    public function CadastrarAutor($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao)
+    public function cadastrarAutor($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao)
         {
           
             //$db = new conexaoDb();
@@ -99,7 +98,7 @@ class Autor extends Pessoa{
             }
         }
 
-    public static function verificarAutor()
+    public static function listarAutores()
     {
         $conn = conexaoDB::conexao();
 
@@ -131,7 +130,7 @@ class Autor extends Pessoa{
     }
 
     
-    public static function buscarAutor(int $id){
+    public static function verificarAutor(int $id){
 
         $conn = conexaoDB::conexao();
 

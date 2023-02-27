@@ -7,7 +7,7 @@ $id = filter_input(INPUT_GET, "id", FILTER_SANITIZE_NUMBER_INT);
 
     if(!empty($id)){
     
-        $info_autor = Autor::buscarAutor((int) $id);  
+        $info_autor = Autor::verificarAutor((int) $id);  
 
         if(!empty($info_autor)){
             $retorna = ['status'=>true, 'dados'=> $info_autor];

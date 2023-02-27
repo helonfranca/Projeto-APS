@@ -5,7 +5,7 @@ require_once("model/Autor.php");
 
 try{
     
-    $lista_autores = Autor::verificarAutor();     
+    $lista_autores = Autor::listarAutores();     
 
 } catch(Exception $e){
     

@@ -34,22 +34,22 @@ class HomeController
 
     public static function saveAutor()
     {
-        include 'GerenciamentoAutor.php';           
+        include 'controllerAutor\CadastroAutorController.php';           
     }
 
     public static function editar()
     {
-        include 'UpdateAutorController.php';            
+        include 'controllerAutor\UpdateAutorController.php';            
     }
 
     public static function remover()
     {
-        include 'DeletarAutorController.php';            
+        include 'controllerAutor\DeletarAutorController.php';            
     }
 
     public static function busca()
     {
-        include 'BuscaAutorController.php';            
+        include 'controllerAutor\VerificarAutorController.php';            
     }
 
     public static function PagOrganizadores()
