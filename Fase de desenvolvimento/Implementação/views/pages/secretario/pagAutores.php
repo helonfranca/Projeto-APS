@@ -1,6 +1,6 @@
 <?php
 
-require_once("controller/verificarAutor.php");
+require_once("controller/controllerAutor/ListarAutoresController.php");
 
 session_start();
 

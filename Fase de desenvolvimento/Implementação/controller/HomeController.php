@@ -34,22 +34,22 @@ class HomeController
 
     public static function saveAutor()
     {
-        include 'GerenciamentoAutor.php';           
+        include 'controllerAutor\CadastroAutorController.php';           
     }
 
     public static function editar()
     {
-        include 'UpdateAutorController.php';            
+        include 'controllerAutor\UpdateAutorController.php';            
     }
 
     public static function remover()
     {
-        include 'DeletarAutorController.php';            
+        include 'controllerAutor\DeletarAutorController.php';            
     }
 
     public static function busca()
     {
-        include 'BuscaAutorController.php';            
+        include 'controllerAutor\VerificarAutorController.php';            
     }
 
     public static function PagOrganizadores()
@@ -59,9 +59,23 @@ class HomeController
 
     public static function saveOrganizador()
     {
-        include 'controllerOrganizador\GerenciamentoOrganizador.php';           
+        include 'controllerOrganizador\CadastroOrganizadorController.php';           
+    }
+    
+    public static function removerOrganizador()
+    {
+        include 'controllerOrganizador\DeletarOrganizadorController.php';           
     }
 
+    public static function buscaOrganizador()
+    {
+        include 'controllerOrganizador\VerificarOrganizadorController.php';            
+    }
+
+    public static function editarOrganizador()
+    {
+        include 'controllerOrganizador\UpdateOrganizadorController.php';            
+    }
    
 
 }

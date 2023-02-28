@@ -31,7 +31,7 @@ class GerenciamentoAutor{
     }
 
     public function incluir(){
-        return $this->cadastro->CadastrarAutor($this->cadastro->getNome(),$this->cadastro->getTelefone(),$this->cadastro->getDataDeNascimento(),$this->cadastro->getSexo(),$this->cadastro->getCurriculoLattes(), $this->cadastro->getInstituicao());
+        return $this->cadastro->cadastrarAutor($this->cadastro->getNome(),$this->cadastro->getTelefone(),$this->cadastro->getDataDeNascimento(),$this->cadastro->getSexo(),$this->cadastro->getCurriculoLattes(), $this->cadastro->getInstituicao());
     }
 
 }

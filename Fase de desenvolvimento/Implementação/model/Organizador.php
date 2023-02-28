@@ -112,7 +112,7 @@ class Organizador extends Pessoa{
             }
         }
 
-    public static function verificarOrganizador()
+    public static function listarOrganizador()
     {
         $conn = conexaoDB::conexao();
 
@@ -130,6 +130,55 @@ class Organizador extends Pessoa{
         }
 
         return $resultado;
+    }
+
+    public static function deletarOrganizador(int $id): bool{
+
+        $conn = conexaoDB::conexao();
+
+        $sql = 'DELETE FROM organizador WHERE Organizador_ID = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $id);
+
+        return $stmt->execute();
+    }
+
+    public static function verificarOrganizador(int $id){
+
+        $conn = conexaoDB::conexao();
+
+        $sql = 'SELECT * FROM organizador WHERE Organizador_ID = ?';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(1, $id);        
+
+        $stmt->execute();
+
+        $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        return $resultado;
+     
+    }
+
+    public function editarOrganizador($nome, $telefone, $DataDeNascimento, $sexo, $CurriculoLattes, $instituicao, $id, $cpf){
+        $this->conn = conexaoDB::conexao();
+
+        $sql = 'UPDATE Organizador SET Nome = :nome, Telefone = :telefone , Instituição = :instituicao,
+        CurriculoLattes = :curriculoLattes , DataDeNascimento = :dataDeNascimento , Sexo = :sexo, Cpf = :cpf WHERE Organizador_ID = :id';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+        $stmt->bindParam(':telefone', $telefone, PDO::PARAM_INT);
+        $stmt->bindParam(':instituicao', $instituicao, PDO::PARAM_STR);
+        $stmt->bindParam(':curriculoLattes', $CurriculoLattes, PDO::PARAM_STR);
+        $stmt->bindParam(':dataDeNascimento', $DataDeNascimento);
+        $stmt->bindParam(':sexo', $sexo, PDO::PARAM_STR);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
+        $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+        if ($stmt->execute() == true) {
+            return true ;
+        } else {
+            return false;
+        }
+
     }
 
     

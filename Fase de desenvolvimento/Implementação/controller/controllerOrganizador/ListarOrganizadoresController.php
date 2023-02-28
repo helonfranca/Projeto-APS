@@ -1,11 +1,11 @@
 <?php
 
 require_once("model/Pessoa.php");
-require_once("model/Autor.php");
+require_once("model/Organizador.php");
 
 try{
     
-    $lista_autores = Autor::verificarAutor();     
+    $lista_organizadores = Organizador::listarOrganizador();     
 
 } catch(Exception $e){
     
