@@ -37,7 +37,6 @@ class Usuario extends Pessoa{
         $stmt->bindParam(':email', $email);
         $stmt->execute();
         $usuario = $stmt->fetch();
-        var_dump($usuario);
         if($usuario && password_verify($senha, $usuario['Senha'])) {
             $_SESSION['tipo_usuario'] = $usuario['Perfil_id_fk'];
             $_SESSION['nome_usuario'] = $usuario['Nome'];

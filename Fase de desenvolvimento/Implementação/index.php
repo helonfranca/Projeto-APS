@@ -55,6 +55,18 @@ switch($url)
         HomeController::saveOrganizador();
     break;
 
+    case '/organizador/form/remover':
+        HomeController::removerOrganizador();
+    break;
+
+    case '/organizador/form/busca':
+        HomeController::buscaOrganizador();
+    break;
+
+    case '/organizador/form/editar':
+        HomeController::editarOrganizador();
+    break;
+
     default:
         echo "<h1  style = 'position: absolute; top: 50%; left: 50%; margin-right: -50%;
         transform: translate(-50%, -50%)'>Erro 404: Desculpe, página não encontrada. :/ </h1>";

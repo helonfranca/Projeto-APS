@@ -1,13 +1,13 @@
 <?php
 
-require_once("controller/controllerOrganizador/verificarOrganizador.php");
+require_once("controller/controllerOrganizador/ListarOrganizadoresController.php");
 
-// session_start();
+session_start();
 
-// if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
-//     header("Location: /");
-//     exit();
-// }
+if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
+    header("Location: /");
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -38,7 +38,7 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                 </div>
 
                 <div class= "login">
-                    <!-- <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>  -->
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>
                     </br>
                     <button id="btn1">Sair</button>
                 </div> 
@@ -90,9 +90,9 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                                             <option value="Prefiro não dizer" id="opsexo" name="opsexo">Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
+                                        <input type="number" id="Telefone" name="telefone" placeholder="" required></br>
                                         <label for="Cpf">Cpf:</label></br>
-                                        <input type="number" id="Cpf" name="cpf" placeholder=""></br>
+                                        <input type="number" id="Cpf" name="cpf" placeholder="" required></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,11 +111,12 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <dl class="row" style=" display: flex; align-items: center; flex-direction: column;">
-                            <dt class="col-sm-3">Nome: <span id="NomeAutor"></span></dt></br>
-                            <dt class="col-sm-3">Telefone:  <span id="TelefoneAutor"></span></dt></br>
-                            <dt class="col-sm-3">Instituição: <span id="InstituicaoAutor"></span></dt></br>
-                            <dt class="col-sm-3">Curriculo: <span id="CurriculoAutor"></dt></br>
+                            <dt class="col-sm-3">Nome: <span id="NomeOrganizador"></span></dt></br>
+                            <dt class="col-sm-3">Telefone:  <span id="TelefoneOrganizador"></span></dt></br>
+                            <dt class="col-sm-3">Instituição: <span id="InstituicaoOrganizador"></span></dt></br>
+                            <dt class="col-sm-3">Curriculo: <span id="CurriculoOrganizador"></dt></br>
                             <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt></br>
+                            <dt class="col-sm-3">CPF: <span id="cpf"></span></dt></br>
                             <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt></br>
                             <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt>
                         </dl>
@@ -130,7 +131,7 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="/autor/form/editar">
+                            <form method="post" action="/organizador/form/editar">
                                 <div class="dentro-form">
                                     <h1>Editar Organizador</h1></br>
                                     <div class= "form-dados">
@@ -150,7 +151,9 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                                             <option value="Prefiro não dizer" >Prefiro não dizer</option>
                                         </select></br></br>
                                         <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="editTelefone" name="editTelefone" placeholder=""></br>
+                                        <input type="number" id="editTelefone" name="editTelefone" placeholder="" required></br>
+                                        <label for="Cpf">Cpf:</label></br>
+                                        <input type="number" id="editCpf" name="editCpf" placeholder="" required></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit" >Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -168,7 +171,7 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../../controller/DeletarAutorController.php">
+                            <form method="post" action="/organizador/form/remover">
                                 <div class="dentro-form">
                                     <h1 style="text-align: center;">Removendo Organizador</h1></br>
                                     <h2 style="text-align: center;">Aviso:</h2></br>
@@ -177,7 +180,7 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button type="button" class="cancel-button5" data-modal-id="modal5">Cancelar</button>
                                     </div>
-                                    <input type="hidden" name="id_autor" id="id_autor_remover" value="">
+                                    <input type="hidden" name="id_organizador" id="id_organizador_remover" value="">
                                 </div>
                             </form>
                         </div>
@@ -224,11 +227,11 @@ require_once("controller/controllerOrganizador/verificarOrganizador.php");
                                     <td><?= $linha->Cpf ?></td>
                                     <td>
 
-                                    <button type="button"  id="<?= $linha->Organizador_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visUsuario(id)"> Verificar</button>                                         
+                                    <button type="button"  id="<?= $linha->Organizador_ID ?>" data-modal-id="modal3" class="btn3"   onclick="visOrganizador(id)"> Verificar</button>                                         
                                     
-                                    <button type="button" data-modal-id="modal4" class="btn4" onclick="editUsuario(id)" id="<?= $linha->Autor_ID ?>">Editar</button>
+                                    <button type="button" data-modal-id="modal4" class="btn4" onclick="editOrganizador(id)" id="<?= $linha->Organizador_ID ?>">Editar</button>
                                         
-                                    <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setAutorIdRemover(<?= $linha->Autor_ID ?>)">Remover</button>                           
+                                    <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5" onclick="setOrganizadorIdRemover(<?= $linha->Organizador_ID ?>)">Remover</button>                           
                                     </td>
                                 </tr>
                             <?php endforeach;

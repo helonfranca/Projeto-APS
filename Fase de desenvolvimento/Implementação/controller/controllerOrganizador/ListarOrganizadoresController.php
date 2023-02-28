@@ -5,7 +5,7 @@ require_once("model/Organizador.php");
 
 try{
     
-    $lista_organizadores = Organizador::verificarOrganizador();     
+    $lista_organizadores = Organizador::listarOrganizador();     
 
 } catch(Exception $e){
     

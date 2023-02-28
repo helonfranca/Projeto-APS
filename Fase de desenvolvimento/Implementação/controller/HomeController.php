@@ -59,9 +59,23 @@ class HomeController
 
     public static function saveOrganizador()
     {
-        include 'controllerOrganizador\GerenciamentoOrganizador.php';           
+        include 'controllerOrganizador\CadastroOrganizadorController.php';           
+    }
+    
+    public static function removerOrganizador()
+    {
+        include 'controllerOrganizador\DeletarOrganizadorController.php';           
     }
 
+    public static function buscaOrganizador()
+    {
+        include 'controllerOrganizador\VerificarOrganizadorController.php';            
+    }
+
+    public static function editarOrganizador()
+    {
+        include 'controllerOrganizador\UpdateOrganizadorController.php';            
+    }
    
 
 }
