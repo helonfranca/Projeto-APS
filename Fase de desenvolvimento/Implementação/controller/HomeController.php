@@ -76,6 +76,16 @@ class HomeController
     {
         include 'controllerOrganizador\UpdateOrganizadorController.php';            
     }
+
+    public static function PagEventos()
+    {
+        include 'views\pages\secretario\pagEventos.php';
+    }
+
+    public static function saveEvento()
+    {
+        include 'controllerEvento\CadastroEventoController.php';           
+    }
    
 
 }

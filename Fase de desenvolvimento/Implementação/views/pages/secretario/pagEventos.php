@@ -1,31 +1,44 @@
+<?php
+session_start();
+
+require_once("controller/controllerOrganizador/ListarOrganizadoresController.php");
+require_once("controller/controllerEvento/ListarEventosController.php");
+
+if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
+    header("Location: /");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/stylecrud.css">
-        <link rel="stylesheet" href="../../../css/stlylemodal.css">
-        
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stylecrud.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         <title>Biblioteca Científica Digital</title>
     </head>
 
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="indexSecretário.html"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
                         <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
                         <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/home">Menu</a>
                     </nav>
                 </div>
 
                 <div class= "login">
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>';?>
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
@@ -38,7 +51,7 @@
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="/logout">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
@@ -57,24 +70,40 @@
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="">
+                            <form method="post" action="/evento/form/save">
                                 <div class="dentro-form">
                                     <h1>Adicionar novo evento</h1></br>
                                     <div class= "form-dados">
                                         <label for="nome">Nome do Evento:</label></br>
                                         <input type="nome" id="nome" name="nome" placeholder="" required></br>
                                         <label for="ano">Ano:</label></br>
-                                        <input type="number" id="ano" name="ano" placeholder="" maxlength="4" required></br>
-                                        <label for="organizador">Organizador:</label></br>
-                                        <input type="organizador" id="organizador" name="organizador" placeholder="" required></br>
+                                        <input type="number" id="ano" name="ano" placeholder="" maxlength="4" required></br></br>
+                                        <label for="organizadores">Organizadores:</label></br>
+                                        <div class="multiselect" style="display: inline-block;" >
+                                            <div class="selectBox" onclick="showCheckboxes()">
+                                                <select>
+                                                    <option>Selecione os organizadores:</option>
+                                                </select>
+                                                <div class="overSelect"></div>
+                                            </div>
+                                            <div id="checkboxes">
+                                            <?php if(isset($lista_organizadores) && !empty($lista_organizadores)): ?>
+                                                <?php foreach ($lista_organizadores as $linha): ?>
+                                                    <label for="<?= $linha->Organizador_ID ?>">
+                                                        <input type="checkbox" value="<?= $linha->Organizador_ID ?>" name="organizador[]"/><?= $linha->Nome ?>
+                                                    </label>
+                                                <?php endforeach;
+                                            endif?>
+                                            </div>
+                                        </div></br></br>
                                         <label for="ano">Tipo:</label></br>
                                         <input type="text" id="tipo" name="tipo" placeholder="" required></br>
+                                        <label for="areadeestudo">Área de Estudo:</label></br>
+                                        <input type="text" id="areadeestudo" name="areadeestudo" placeholder="" required></br>
                                         <label for="link">Link do Evento:</label></br>
                                         <input type="link" id="link" name="link" placeholder="" required></br>
-                                        <label for="descrição">Descrição:</label></br>
-                                        <input type="text" id="descrição" name="descrição" placeholder="" required></br>
-                                        <label for="ano">Trilha:</label></br>
-                                        <input type="text" id="ano" name="trilha" placeholder=""></br>
+                                        <label for="descricao">Descrição:</label></br>
+                                        <input type="text" id="descricao" name="descricao" placeholder="" required></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -94,27 +123,16 @@
                         <div class="fora-form">
                             <form method="post" action="">
                                 <div class="dentro-form">
-                                    <h1>Dados evento</h1></br>
-                                    <div class= "form-dados">
-                                        <label for="nome">Nome do Evento:</label></br>
-                                        <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="ano">Ano:</label></br>
-                                        <input type="number" id="ano" name="ano" placeholder="" maxlength="4" required></br>
-                                        <label for="organizador">Organizador:</label></br>
-                                        <input type="organizador" id="organizador" name="organizador" placeholder="" required></br>
-                                        <label for="ano">Tipo:</label></br>
-                                        <input type="text" id="tipo" name="tipo" placeholder="" required></br>
-                                        <label for="link">Link do Evento:</label></br>
-                                        <input type="link" id="link" name="link" placeholder="" required></br>
-                                        <label for="descrição">Descrição:</label></br>
-                                        <input type="text" id="descrição" name="descrição" placeholder="" required></br>
-                                        <label for="ano">Trilha:</label></br>
-                                        <input type="text" id="ano" name="trilha" placeholder=""></br>
-                                    </div>
-                                    <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button3">Cancelar</button>
-                                    </div>
+                                <dl class="row" style=" display: flex; align-items: center; flex-direction: column;">
+                                    <dt class="col-sm-3">Nome: <span id="NomeOrganizador"></span></dt></br>
+                                    <dt class="col-sm-3">Telefone:  <span id="TelefoneOrganizador"></span></dt></br>
+                                    <dt class="col-sm-3">Instituição: <span id="InstituicaoOrganizador"></span></dt></br>
+                                    <dt class="col-sm-3">Curriculo: <span id="CurriculoOrganizador"></dt></br>
+                                    <dt class="col-sm-3">Data de Nascimento: <span id="DataNasc"></span></dt></br>
+                                    <dt class="col-sm-3">CPF: <span id="cpf"></span></dt></br>
+                                    <dt class="col-sm-3">Sexo: <span id="Sexo"></span></dt></br>
+                                    <dt><button type="button" class="cancel-button3" data-modal-id="modal3">Fechar</button></dt>
+                                </dl>
                                 </div>
                             </form>
                         </div>
@@ -147,8 +165,8 @@
                                         <input type="text" id="ano" name="trilha" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button4">Cancelar</button>
+                                        <button type="submit" >Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" class="cancel-button4" data-modal-id="modal4">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -169,7 +187,7 @@
                                     <h3 style="text-align: center;">Você realmente deseja apagar o evento?</h3></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="button" id="cancel-button5">Cancelar</button>
+                                        <button type="button" class="cancel-button5" data-modal-id="modal5">Cancelar</button>
                                     </div>
                                 </div>
                             </form>
@@ -183,7 +201,7 @@
             </div>    
                 
             <div class="bt-container">
-                <button id = "btn2">Adicionar novo evento</button> 
+                <button id = "btn2" name="btn2">Adicionar novo evento</button> 
             </div>      
                 
             <div class="container_table"> 
@@ -192,10 +210,10 @@
 
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Eventos</a></div> 
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Autores</a></div>   
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Artigos</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/organizadores">Gerenciar Organizadores</a></div>  
+                        <div class="itens_menu_esq"><a style="color: white;" href="/eventos">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/autores">Gerenciar Autores</a></div>   
+                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Artigos</a></div>
                     </div>
                 </div>
                     
@@ -204,112 +222,42 @@
                         <tr>
                             <th>Nome do Evento</th>
                             <th>Ano</th>
-                            <th>Organizador</th>
+                            <th>Organizador(es)</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
-                            <td>2023</td>
-                            <td>Helon</td>
-                            <td>
-                                <button type="button" id = "btn3">Verificar</button>
-                                <button type="button" id = "btn4">Editar</button>
-                                <button type="button" id = "btn5">Remover</button>
-                            </td>
-                        </tr>
+                        <?php if(isset($meus_eventos) && !empty($meus_eventos)):
+                            foreach ($meus_eventos as $linha): ?>                        
+                                <tr>
+                                    <td><?= $linha->Nome?></td>
+                                    <td><?= $linha->Ano?></td>
+                                    <td><?= $linha->organizadores?></td>
 
-                        <tr>
-                            <td>CNSI 2000 - Congresso Nacional de Sistemas de Informação</td>
-                            <td>2023</td>
-                            <td>Pablo</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>CNCC 1999 - Congresso Nacional de Ciência da Computação</td>
-                            <td>2023</td>
-                            <td>Vanessa</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>CBBM 2003 - Congresso Brasileiro de Biomedicina </td>
-                            <td>2023</td>
-                            <td>Thiago</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>SSI 2010 - Semana de Sistemas de Informação UFRRJ</td>
-                            <td>2023</td>
-                            <td>Helon</td>
-                            <td>
-                                <button type="button" >Verificar</button>
-                                <button type="button" >Editar</button>
-                                <button type="button" >Remover</button>
-                            </td>
-                        </tr>
+                                    <td>
+                                        <button type="button" data-modal-id="modal3" class="btn3"> Verificar</button>                                         
+                                        
+                                        <button type="button" data-modal-id="modal4" class="btn4">Editar</button>
+                                            
+                                        <button type="button" data-modal-id="modal5" class="btn5" data-target="#modal5">Remover</button>                           
+                                    </td>
+                                </tr>
+                            <?php endforeach;
+                        endif?>
                     </tbody>
                 </table>
             </div>
              
         </section>
 
-        
-        <script src="../../../js/jquery-3.6.0.min.js"></script> 
-        <script>
-            $(document).ready(function(){
-                $("#btn1").click(function(){
-                    $("#modal1").show();
-                });              
-                $("#cancel-button1").click(function(){
-                    $("#modal1").hide();
-                });
-                $("#btn2").click(function(){
-                    $("#modal2").show();
-                });              
-                $("#cancel-button2").click(function(){
-                    $("#modal2").hide();
-                });
-                $("#btn3").click(function(){
-                    $("#modal3").show();
-                });              
-                $("#cancel-button3").click(function(){
-                    $("#modal3").hide();
-                });
-                $("#btn4").click(function(){
-                    $("#modal4").show();
-                });              
-                $("#cancel-button4").click(function(){
-                    $("#modal4").hide();
-                });
-                $("#btn5").click(function(){
-                    $("#modal5").show();
-                });              
-                $("#cancel-button5").click(function(){
-                    $("#modal5").hide();
-                });
-            });        
-        </script>
+        <script src="views/js/functions.js"></script> 
+        <script src="views/js/jquery-3.6.0.min.js"></script> 
+        <script src="views/js/functionsmodais.js"></script>
 
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>

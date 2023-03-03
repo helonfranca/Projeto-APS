@@ -65,20 +65,20 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div class = "navegacao">
                     <div class="blocos">
                         </br></br></br></br>
-                        <div class="dentro_bloco">
-                            <a href="google.com"><h3>Gerenciar Eventos</h3></a>
-                        </div>
-                        </br>
-                        <div class="dentro_bloco" href="www.google.com">
+                        <div class="dentro_bloco" >
                             <a href="/organizadores"><h3>Gerenciar Organizadores</h3></a>
                         </div>
                         </br>
-                        <div class="dentro_bloco" href="www.google.com">
-                            <a href="google.com"><h3>Gerenciar Artigos</h3></a>
+                        <div class="dentro_bloco">
+                            <a href="/eventos"><h3>Gerenciar Eventos</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco">
                             <a href="/autores"><h3>Gerenciar Autores</h3></a>
+                        </div>
+                        </br>
+                        <div class="dentro_bloco" href="www.google.com">
+                            <a href="google.com"><h3>Gerenciar Artigos</h3></a>
                         </div>
                         </br></br></br>
                     </div>

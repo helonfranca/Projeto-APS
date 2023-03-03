@@ -52,7 +52,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
-                            <form method="post" action="../../../controller/LogoutController.php">
+                            <form method="post" action="/logout">
                                 <div class="dentro-form">
                                     <h2>Deseja Sair do Sitema?</h2></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
@@ -203,7 +203,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
                         <div class="itens_menu_esq"><a style="color: white;" href="/organizadores">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/eventos">Gerenciar Eventos</a></div> 
                         <div class="itens_menu_esq"><a style="color: white;" href="/autores">Gerenciar Autores</a></div>   
                         <div class="itens_menu_esq"><a style="color: white;" href="google.com">Gerenciar Artigos</a></div>
                     </div>

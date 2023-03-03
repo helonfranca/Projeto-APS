@@ -44,7 +44,7 @@ class Usuario extends Pessoa{
             return true;
         }
         else{
-            $_SESSION['login_erro'] = "Email ou senha incorretos!";
+            $_SESSION['login_erro'] = "Email e/ou senha inválido(s)!";
             header("Location: /?login_erro=1");
             exit();
         }
