@@ -14,6 +14,7 @@ if (isset($_SESSION['tipo_usuario'])) {
             exit();
     }
 }
+
 ?><!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -26,6 +27,24 @@ if (isset($_SESSION['tipo_usuario'])) {
     </head>
 
     <body>
+        <?php
+            if (isset($_SESSION['login_erro'])) { // verifica se a variável de sessão existe
+                echo '  <div id ="modal2"; >
+                            <div class="modal";>
+                                <div class="modal-content-error";>
+                                    <div style="color: red; font-size: 20px";>
+                                    ' . $_SESSION['login_erro'] . '
+                                    </div>
+                                    <div class="confirm"; style="padding-top: 10px;padding-bottom: 10px;">
+                                        <button type="button" id="cancel-button">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>'; // exibe a mensagem de erro                       
+                unset($_SESSION['login_erro']); // remove a variável de sessão
+            }
+        ?>
+
         <header>
             <div class = "container">
                 <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
@@ -61,12 +80,6 @@ if (isset($_SESSION['tipo_usuario'])) {
                                         <label for="password">Senha:</label></br>
                                         <input type="password" id="senha" name="senha" placeholder="Senha" required>
                                     </div>
-                                    <?php
-                                        if (isset($_SESSION['login_erro'])) { // verifica se a variável de sessão existe
-                                            echo '<div style="color: red;">' . $_SESSION['login_erro'] . '</div>'; // exibe a mensagem de erro
-                                            unset($_SESSION['login_erro']); // remove a variável de sessão
-                                        }
-                                    ?>
                                     </br></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit" submit="">Confirmar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,6 +139,9 @@ if (isset($_SESSION['tipo_usuario'])) {
                 });              
                 $("#cancel-button1").click(function(){
                     $("#modal1").hide();
+                });
+                $("#cancel-button").click(function(){
+                    $("#modal2").hide();
                 });
             });        
         </script> 

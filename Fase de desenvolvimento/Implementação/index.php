@@ -67,6 +67,14 @@ switch($url)
         HomeController::editarOrganizador();
     break;
 
+    case '/eventos':
+        HomeController::PagEventos();
+    break;
+
+    case '/evento/form/save':
+        HomeController::saveEvento();
+    break;
+
     default:
         echo "<h1  style = 'position: absolute; top: 50%; left: 50%; margin-right: -50%;
         transform: translate(-50%, -50%)'>Erro 404: Desculpe, página não encontrada. :/ </h1>";

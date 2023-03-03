@@ -16,11 +16,24 @@
   padding: 20px;
   border: 1px solid #888;
   width: 50%; /* Largura do conteúdo do modal */
-  border-radius: 10px; 
+  border-radius: 10px;
+  
 }
+
+.modal-content-error {
+  background-color: #fefefe;
+  margin: 10% auto; /* Centraliza o modal na tela */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%; /* Largura do conteúdo do modal */
+  border-radius: 10px; 
+  text-align: center;
+}
+
 .login{
   text-align: center;
 }
+
 .close-button {
   color: #aaa;
   float: right;
