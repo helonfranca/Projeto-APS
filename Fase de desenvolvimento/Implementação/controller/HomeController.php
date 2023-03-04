@@ -22,6 +22,12 @@ class HomeController
         include 'views\pages\administrador\menuAdm.php';
     }
 
+     //NEW
+    public static function gerenciaADM()
+    {
+        include 'views\pages\administrador\crudSecretario.php';
+    }
+    
     public static function menuSecretario()
     {
         include 'views\pages\secretario\menuSecretario.php';

@@ -27,6 +27,11 @@ switch($url)
         HomeController::menuSecretario();
     break;
 
+    //NEW
+    case '/gerenciaADM':
+        HomeController::gerenciaADM();
+    break;
+
     case '/autores':
         HomeController::PagAutores();
     break;
