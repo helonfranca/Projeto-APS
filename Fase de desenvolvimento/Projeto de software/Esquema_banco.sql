@@ -16,7 +16,7 @@ Telefone				CHAR(15) 		NOT NULL,
 DataDeNascimento		DATE			NOT NULL,
 Sexo 					CHAR(20)		NOT NULL,
 Cpf 					CHAR(11)		NOT NULL		UNIQUE, 
-Endereço				VARCHAR(50)		NOT NULL,
+Endereco				VARCHAR(50)		NOT NULL, #sem ç
 Email					VARCHAR(50)		NOT NULL,
 Perfil_id_fk			INT				NOT NULL,
 
