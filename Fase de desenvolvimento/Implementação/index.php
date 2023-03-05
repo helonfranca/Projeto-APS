@@ -75,6 +75,38 @@ switch($url)
         HomeController::saveEvento();
     break;
 
+    case '/secretario':
+        HomeController::PagSecretario();
+    break;
+
+    case '/secretario/form/save':
+        HomeController::saveSecretario();
+    break;
+
+    case '/secretario/form/busca':
+        HomeController::buscaSecretario();
+    break;
+
+    case '/artigos':
+        HomeController::PagArtigos();
+    break;
+
+    case '/eventosAdm':
+        HomeController::PagAdmEvento();
+    break;
+
+    case '/artigosAdm':
+        HomeController::PagAdmArtigos();
+    break;
+
+    case '/organizadoresAdm':
+        HomeController::PagAdmOrganizador();
+    break;
+
+    case '/autoresAdm':
+        HomeController::PagAdmAutores();
+    break;
+
     default:
         echo "<h1  style = 'position: absolute; top: 50%; left: 50%; margin-right: -50%;
         transform: translate(-50%, -50%)'>Erro 404: Desculpe, página não encontrada. :/ </h1>";

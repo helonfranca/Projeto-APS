@@ -15,8 +15,8 @@ Senha					VARCHAR(100)    NOT NULL,
 Telefone				CHAR(15) 		NOT NULL,
 DataDeNascimento		DATE			NOT NULL,
 Sexo 					CHAR(20)		NOT NULL,
-Cpf 					CHAR(11)		NOT NULL		UNIQUE, 
-Endereço				VARCHAR(50)		NOT NULL,
+Cpf 					CHAR(20)		NOT NULL		UNIQUE, 
+Endereco				VARCHAR(50)		NOT NULL,
 Email					VARCHAR(50)		NOT NULL,
 Perfil_id_fk			INT				NOT NULL,
 
@@ -32,9 +32,9 @@ Instituição				VARCHAR(50) 	NOT NULL,
 CurriculoLattes			VARCHAR(50)		NOT NULL,
 DataDeNascimento		DATE			NOT NULL,
 Sexo 					CHAR(20)		NOT NULL,
-Cpf 					CHAR(11)		NOT NULL  		UNIQUE,
+Cpf 					CHAR(20)		NOT NULL  		UNIQUE,
 
- PRIMARY KEY (Organizador_ID)
+PRIMARY KEY (Organizador_ID)
 );
 
 CREATE TABLE EVENTO(
@@ -80,7 +80,7 @@ Artigo_ID				INT 			NOT NULL		AUTO_INCREMENT,
 Titulo		 			VARCHAR(50)    	NOT NULL,
 Abstract		 		VARCHAR(100)    NOT NULL,
 Linguagem				VARCHAR(20) 	NOT NULL,
-datapublicação          date			NOT NULL,
+datapublicacao          date			NOT NULL,
 EmaildeContato			VARCHAR(40)		NOT NULL,
 ArquivoPDF 				VARCHAR(40) 	NOT NULL,
 Trilha_artigo_fk		INT 			NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE AUTOR(
 Autor_ID				INT 			NOT NULL		AUTO_INCREMENT,
 Nome		 			VARCHAR(50)    	NOT NULL,
 Telefone				CHAR(15) 		NOT NULL,
-Instituição				VARCHAR(50) 	NOT NULL,
+Instituicao				VARCHAR(50) 	NOT NULL,
 CurriculoLattes			VARCHAR(50)		NOT NULL,
 DataDeNascimento		DATE			NOT NULL,
 Sexo 					CHAR(20)		NOT NULL,

@@ -77,8 +77,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                             <a href="/autores"><h3>Gerenciar Autores</h3></a>
                         </div>
                         </br>
-                        <div class="dentro_bloco" href="www.google.com">
-                            <a href="google.com"><h3>Gerenciar Artigos</h3></a>
+                        <div class="dentro_bloco" >
+                            <a href="/artigos"><h3>Gerenciar Artigos</h3></a>
                         </div>
                         </br></br></br>
                     </div>

@@ -1,12 +1,24 @@
+<?php
+
+//criando rotas
+
+session_start();
+
+if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "1") {
+    header("Location: /");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/stylecrud.css">
-        <link rel="stylesheet" href="../../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stylecrud.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         
         <title>Biblioteca Científica Digital</title>
     </head>
@@ -14,18 +26,20 @@
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="indexSecretário.html"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
                         <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
                         <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/homeAdm">Menu</a>
                     </nav>
                 </div>
 
-                <div class= "login">
+                <div class="login">
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>'; ?>
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
@@ -196,11 +210,11 @@
 
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Eventos</a></div> 
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Autores</a></div>   
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Artigos</a></div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Secretários</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/organizadoresAdm">Gerenciar Organizadores</a></div>  
+                        <div class="itens_menu_esq"><a style="color: white;" href="/eventosAdm">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/autoresAdm">Gerenciar Autores</a></div>   
+                        <div class="itens_menu_esq"><a style="color: white;" href="/artigosAdm">Gerenciar Artigos</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/secretario">Gerenciar Secretários</a></div>
                     </div>
                 </div>
                     
@@ -314,7 +328,7 @@
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>

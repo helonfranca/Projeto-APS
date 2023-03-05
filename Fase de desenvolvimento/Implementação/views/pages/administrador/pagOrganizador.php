@@ -1,12 +1,24 @@
+<?php
+
+//criando rotas
+
+session_start();
+
+if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "1") {
+    header("Location: /");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../../../css/style.css">
-        <link rel="stylesheet" href="../../../css/stylecrud.css">
-        <link rel="stylesheet" href="../../../css/stlylemodal.css">
+        <link rel="stylesheet" href="views/css/style.css">
+        <link rel="stylesheet" href="views/css/stylecrud.css">
+        <link rel="stylesheet" href="views/css/stlylemodal.css">
         
         <title>Biblioteca Científica Digital</title>
     </head>
@@ -14,18 +26,20 @@
     <body>
         <header>
             <div class = "container">
-                <div class = "logo"><a href="indexSecretário.html"><img src="../../../img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="indexSecretário.html"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="IndexSecretário.html#Sobre">Sobre</a>
                         <a href="IndexSecretário.html#Colaborador">Quero ser colaborador</a>
                         <a href="IndexSecretário.html#Artigo">Submeta seu artigo</a>
                         <a href="eventos.html">Eventos</a>
-                        <a href="MenuSecretário.html">Menu</a>
+                        <a href="/homeAdm">Menu</a>
                     </nav>
                 </div>
 
-                <div class= "login">
+                <div class="login">
+                    <?php echo '<p>Bem-vindo, ' . $_SESSION['nome_usuario'] . '!</p>'; ?>
+                    </br>
                     <button id="btn1">Sair</button>
                 </div> 
                   
@@ -52,68 +66,72 @@
                 </div>
             </div>
 
-            <!-- Modal Adicionar Secretario -->
+            <!-- Modal Adicionar Organizador -->
             <div id="modal2" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
-                        <div class="dentro-form">
-                            <h1>Editar Secretário</h1></br>
-                            <div class= "form-dados">
-                                <label for="nome">Nome do Secretário:</label></br>
-                                <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                <label for="cpf">CPF:</label></br>
-                                <input type="number" id="cpf" name="cpf" placeholder="" maxlength="11" required></br>
-                                <label for="telefone">Telefone:</label></br>
-                                <input type="tel" id="telefone" name="telefone" placeholder="" required></br>
-                                <label for="ano">Sexo:</label></br>
-                                <select name="select">
-                                    <option value="valor1">Masculino</option>
-                                    <option value="valor2" selected>Feminino</option>
-                                    <option value="valor3">Prefiro não dizer</option>
-                                </select></br></br>
-                                <label for="email">E-mail:</label></br>
-                                <input type="email" id="email" name="email" placeholder="" required></br>
-                                <label for="endereço">Endereço:</label></br>
-                                <input type="text" id="endereço" name="endereço" placeholder="" required></br>
-                                <label for="senha">Senha:</label></br>
-                                <input type="text" id="senha" name="senha" placeholder=""></br>
-                            </div>
-                            <div style = "text-align:center; margin-left: auto; margin-right: auto;">
-                                <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <button type="button" id="cancel-button2">Cancelar</button>
-                            </div>
+                        <div class="fora-form">
+                            <form method="post" action="">
+                                <div class="dentro-form">
+                                    <h1>Adicionar novo Organizador</h1></br>
+                                    <div class= "form-dados">
+                                        <label for="nome">Nome do Organizador:</label></br>
+                                        <input type="nome" id="nome" name="nome" placeholder="" required></br>
+                                        <label for="date">Data de Nascimento:</label></br>
+                                        <input type="date" id="date" name="date" placeholder="" required></br>
+                                        <label for="cpf">Cpf::</label></br>
+                                        <input type="number" id="number" name="cpf" maxlength="11" placeholder="" required></br>
+                                        <label for="sexo">Sexo:</label></br>
+                                        <select name="select">
+                                            <option value="valor1">Masculino</option>
+                                            <option value="valor2" selected>Feminino</option>
+                                            <option value="valor3">Prefiro não dizer</option>
+                                        </select></br></br>
+                                        <label for="number">Telefone:</label></br>
+                                        <input type="number" id="telefone" name="telefone" placeholder="" required></br>
+                                        <label for="text">Instituição:</label></br>
+                                        <input type="text" id="instituicao" name="instituicao" placeholder="" required></br>
+                                        <label for="text">Curriculo-lattes:</label></br>
+                                        <input type="text" id="curriculo-lattes" name="curriculo-lattes" placeholder=""></br>
+                                    </div>
+                                    <div style = "text-align:center; margin-left: auto; margin-right: auto;">
+                                        <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="button" id="cancel-button2">Cancelar</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Modal Verificar Secretario -->
+            <!-- Modal Verificar Organizador -->
             <div id="modal3" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
                             <form method="post" action="">
                                 <div class="dentro-form">
-                                    <h1>Editar Secretário</h1></br>
+                                    <h1>Dados Organizador</h1></br>
                                     <div class= "form-dados">
-                                        <label for="nome">Nome do Secretário:</label></br>
+                                        <label for="nome">Nome do Organizador:</label></br>
                                         <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="cpf">CPF:</label></br>
-                                        <input type="number" id="cpf" name="cpf" placeholder="" maxlength="11" required></br>
-                                        <label for="telefone">Telefone:</label></br>
-                                        <input type="tel" id="telefone" name="telefone" placeholder="" required></br>
+                                        <label for="date">Data de Nascimento:</label></br>
+                                        <input type="date" id="date" name="date" placeholder="" required></br>
+                                        <label for="cpf">Cpf::</label></br>
+                                        <input type="number" id="number" name="cpf" maxlength="11" placeholder="" required></br>
                                         <label for="ano">Sexo:</label></br>
                                         <select name="select">
                                             <option value="valor1">Masculino</option>
                                             <option value="valor2" selected>Feminino</option>
                                             <option value="valor3">Prefiro não dizer</option>
                                         </select></br></br>
-                                        <label for="email">E-mail:</label></br>
-                                        <input type="email" id="email" name="email" placeholder="" required></br>
-                                        <label for="endereço">Endereço:</label></br>
-                                        <input type="text" id="endereço" name="endereço" placeholder="" required></br>
-                                        <label for="senha">Senha:</label></br>
-                                        <input type="text" id="senha" name="senha" placeholder=""></br>
+                                        <label for="number">Telefone:</label></br>
+                                        <input type="number" id="telefone" name="telefone" placeholder="" required></br>
+                                        <label for="text">Instituição:</label></br>
+                                        <input type="text" id="instituicao" name="instituicao" placeholder="" required></br>
+                                        <label for="text">Curriculo-lattes:</label></br>
+                                        <input type="text" id="curriculo-lattes" name="curriculo-lattes" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -126,33 +144,33 @@
                 </div>
             </div>
 
-            <!-- Modal Editar Secretario-->
+            <!-- Modal Editar Organizador -->
             <div id="modal4" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
                             <form method="post" action="">
                                 <div class="dentro-form">
-                                    <h1>Editar Secretário</h1></br>
+                                    <h1>Editar Organizador</h1></br>
                                     <div class= "form-dados">
-                                        <label for="nome">Nome do Secretário:</label></br>
+                                        <label for="nome">Nome do Organizador:</label></br>
                                         <input type="nome" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="cpf">CPF:</label></br>
-                                        <input type="number" id="cpf" name="cpf" placeholder="" maxlength="11" required></br>
-                                        <label for="telefone">Telefone:</label></br>
-                                        <input type="tel" id="telefone" name="telefone" placeholder="" required></br>
+                                        <label for="date">Data de Nascimento:</label></br>
+                                        <input type="date" id="date" name="date" placeholder="" required></br>
+                                        <label for="cpf">Cpf::</label></br>
+                                        <input type="number" id="number" name="cpf" maxlength="11" placeholder="" required></br>
                                         <label for="ano">Sexo:</label></br>
                                         <select name="select">
                                             <option value="valor1">Masculino</option>
                                             <option value="valor2" selected>Feminino</option>
                                             <option value="valor3">Prefiro não dizer</option>
                                         </select></br></br>
-                                        <label for="email">E-mail:</label></br>
-                                        <input type="email" id="email" name="email" placeholder="" required></br>
-                                        <label for="endereço">Endereço:</label></br>
-                                        <input type="text" id="endereço" name="endereço" placeholder="" required></br>
-                                        <label for="senha">Senha:</label></br>
-                                        <input type="text" id="senha" name="senha" placeholder=""></br>
+                                        <label for="number">Telefone:</label></br>
+                                        <input type="number" id="telefone" name="telefone" placeholder="" required></br>
+                                        <label for="text">Instituição:</label></br>
+                                        <input type="text" id="instituicao" name="instituicao" placeholder="" required></br>
+                                        <label for="text">Curriculo-lattes:</label></br>
+                                        <input type="text" id="curriculo-lattes" name="curriculo-lattes" placeholder=""></br>
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -165,16 +183,16 @@
                 </div>
             </div>
 
-            <!-- Modal Remover Evento -->
+            <!-- Modal Remover Organizador -->
             <div id="modal5" style="display: none;">
                 <div id="modal" class="modal">
                     <div class="modal-content">
                         <div class="fora-form">
                             <form method="post" action="">
                                 <div class="dentro-form">
-                                    <h1 style="text-align: center;">Removendo Secretário</h1></br>
+                                    <h1 style="text-align: center;">Removendo Organizador</h1></br>
                                     <h2 style="text-align: center;">Aviso:</h2></br>
-                                    <h3 style="text-align: center;">Você realmente deseja apagar o Secretário?</h3></br>
+                                    <h3 style="text-align: center;">Você realmente deseja apagar o organizador?</h3></br>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <button type="button" id="cancel-button5">Cancelar</button>
@@ -187,11 +205,11 @@
             </div>
 
             <div class="dentro-bloco" >
-                <h3>Gerenciar Secretários</h3>
+                <h3>Gerenciar Organizador</h3>
             </div>    
                 
             <div class="bt-container">
-                <button id = "btn2">Adicionar novo secretário</button> 
+                <button id = "btn2">Adicionar novo organizador</button> 
             </div>      
                 
             <div class="container_table"> 
@@ -200,30 +218,28 @@
 
                 <div style="padding-top: 70px;padding-bottom: 90px;">
                     <div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Organizadores</a></div>  
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Eventos</a></div> 
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Autores</a></div>   
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Artigos</a></div>
-                        <div class="itens_menu_esq"><a href="google.com">Gerenciar Secretários</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/organizadoresAdm">Gerenciar Organizadores</a></div>  
+                        <div class="itens_menu_esq"><a style="color: white;" href="/eventosAdm">Gerenciar Eventos</a></div> 
+                        <div class="itens_menu_esq"><a style="color: white;" href="/autoresAdm">Gerenciar Autores</a></div>   
+                        <div class="itens_menu_esq"><a style="color: white;" href="/artigosAdm">Gerenciar Artigos</a></div>
+                        <div class="itens_menu_esq"><a style="color: white;" href="/secretario">Gerenciar Secretários</a></div>
                     </div>
                 </div>
                     
                 <table>
                     <thead>
                         <tr>
-                            <th>Nome do Secretário</th>
-                            <th>CPF</th>
-                            <th>Telefone</th>
-                            <th>Email</th>
+                            <th>Nome do organizador</th>
+                            <th>Cpf</th>
+                            <th>Evento</th>
                             <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Helon de França</td>
-                            <td>999.999.999-99</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>fulandodetal@email.com</td>
+                            <td>Helon</td>
+                            <td>12345678912</td>
+                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
                             <td>
                                 <button type="button" id = "btn3">Verificar</button>
                                 <button type="button" id = "btn4">Editar</button>
@@ -233,9 +249,8 @@
 
                         <tr>
                             <td>Pablo</td>
-                            <td>999.999.999-99</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>fulandodetal@email.com</td>
+                            <td>12345678912</td>
+                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
                             <td>
                                 <button type="button" >Verificar</button>
                                 <button type="button" >Editar</button>
@@ -245,9 +260,8 @@
 
                         <tr>
                             <td>Vanessa</td>
-                            <td>999.999.999-99</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>fulandodetal@email.com</td>
+                            <td>12345678912</td>
+                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
                             <td>
                                 <button type="button" >Verificar</button>
                                 <button type="button" >Editar</button>
@@ -257,9 +271,8 @@
 
                         <tr>
                             <td>Thiago</td>
-                            <td>999.999.999-99</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>fulandodetal@email.com</td>
+                            <td>12345678912</td>
+                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
                             <td>
                                 <button type="button" >Verificar</button>
                                 <button type="button" >Editar</button>
@@ -268,10 +281,9 @@
                         </tr>
 
                         <tr>
-                            <td>Fulano</td>
-                            <td>999.999.999-99</td>
-                            <td>+55(99)99999-9999</td>
-                            <td>fulandodetal@email.com</td>
+                            <td>Helon</td>
+                            <td>12345678912</td>
+                            <td>CNSI 1999 - Congresso Nacional de Sistemas de Informação</td>
                             <td>
                                 <button type="button" >Verificar</button>
                                 <button type="button" >Editar</button>
@@ -285,7 +297,7 @@
         </section>
 
         
-        <script src="../../../js/jquery-3.6.0.min.js"></script>  
+        <script src="../../../js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
                 $("#btn1").click(function(){
@@ -324,7 +336,7 @@
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="../../../img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>
