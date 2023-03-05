@@ -27,11 +27,6 @@ switch($url)
         HomeController::menuSecretario();
     break;
 
-    //NEW
-    case '/gerenciaADM':
-        HomeController::gerenciaADM();
-    break;
-
     case '/autores':
         HomeController::PagAutores();
     break;
@@ -78,6 +73,38 @@ switch($url)
 
     case '/evento/form/save':
         HomeController::saveEvento();
+    break;
+
+    case '/secretario':
+        HomeController::PagSecretario();
+    break;
+
+    case '/secretario/form/save':
+        HomeController::saveSecretario();
+    break;
+
+    case '/secretario/form/busca':
+        HomeController::buscaSecretario();
+    break;
+
+    case '/artigos':
+        HomeController::PagArtigos();
+    break;
+
+    case '/eventosAdm':
+        HomeController::PagAdmEvento();
+    break;
+
+    case '/artigosAdm':
+        HomeController::PagAdmArtigos();
+    break;
+
+    case '/organizadoresAdm':
+        HomeController::PagAdmOrganizador();
+    break;
+
+    case '/autoresAdm':
+        HomeController::PagAdmAutores();
     break;
 
     default:

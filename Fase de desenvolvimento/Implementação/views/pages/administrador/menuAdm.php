@@ -24,9 +24,9 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "1") {
                     <nav>
                         <a href="indexAdm.html#Sobre">Sobre</a>
                         <a href="indexAdm.html#Colaborador">Quero ser colaborador</a>
-                        <a href="..indexAdm.html#Artigo">Submeta seu artigo</a>
+                        <a href="indexAdm.html#Artigo">Submeta seu artigo</a>
                         <a href="indexAdm.htmleventos.html">Eventos</a>
-                        <a href="MenuAdm.html">Menu</a>
+                        <a href="/homeAdm">Menu</a>
                     </nav>
                 </div>
 
@@ -64,23 +64,23 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "1") {
                     <div class="blocos">
                         </br></br></br>
                         <div class="dentro_bloco">
-                            <a href="google.com"><h3>Gerenciar Eventos</h3></a>
+                            <a href="/eventosAdm"><h3>Gerenciar Eventos</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco" >
-                            <a href="google.com"><h3>Gerenciar Organizadores</h3></a>
+                            <a href="/organizadoresAdm"><h3>Gerenciar Organizadores</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco" >
-                            <a href="google.com"><h3>Gerenciar Artigos</h3></a>
+                            <a href="/artigosAdm"><h3>Gerenciar Artigos</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco">
-                            <a href="google.com"><h3>Gerenciar Autores</h3></a>
+                            <a href="/autoresAdm"><h3>Gerenciar Autores</h3></a>
                         </div>
                         </br>
                         <div class="dentro_bloco"> 
-                        <a href="google.com"><h3>Gerenciar Secretário</h3></a>
+                        <a href="/secretario"><h3>Gerenciar Secretário</h3></a>
                         </div>
                         </br>
                         

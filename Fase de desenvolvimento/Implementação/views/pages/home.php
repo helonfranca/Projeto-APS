@@ -130,7 +130,7 @@ if (isset($_SESSION['tipo_usuario'])) {
                 </div>
             </div>   
         </section>
-
+        
         <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){

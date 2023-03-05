@@ -6,24 +6,7 @@ class Usuario extends Pessoa{
     private $conn;
     private $email;
     private $senha;
-    private $tipo; //New
-
-    //New
-    public function setNome(string $nome): void {
-        $this->nome = $nome;
-    }
-    
-    public function getNome(): string {
-        return $this->nome;
-    }
-    
-    public function setTelefone(string $telefone): void {
-        $this->telefone = $telefone;
-    }
-    
-    public function getTelefone(): string {
-        return $this->telefone;
-    }
+    private $tipo; 
     
     public function setEmail(string $email): void {
         $this->email = $email;
@@ -32,25 +15,20 @@ class Usuario extends Pessoa{
     public function getEmail(): string {
         return $this->email;
     }
-
-    public function __construct() {
-      
-    }
   
     public function getSenha() {
       return $this->senha;
     }
 
-    //New
-    public function getTipo() {
-        return $this->tipo;
-      }
-    
-
 	public function setSenha($senha){
 		$this->senha = $senha;
 		return $this;
 	}
+
+    //New
+    public function getTipo() {
+        return $this->tipo;
+    }
 
     //New
     public function setTipo($tipo){

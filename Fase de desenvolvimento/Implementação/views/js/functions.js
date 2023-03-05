@@ -104,3 +104,22 @@ async function editOrganizador(id) {
     }   
 }
 
+async function visSecretario(id) {
+    const dados = await fetch('/secretario/form/busca?id=' + id);
+    const resposta = await dados.json();
+    console.log(resposta);
+
+    if (resposta['status']){
+        document.getElementById("NomeSecretario").innerHTML = resposta['dados'].Nome;
+        document.getElementById("TelefoneSecretario").innerHTML = resposta['dados'].Telefone;
+        document.getElementById("CpfSecretario").innerHTML = resposta['dados'].Cpf;
+        document.getElementById("EmailSecretario").innerHTML = resposta['dados'].Email;
+
+    }else{
+        document.getElementById("msgAlerta").innerHTML = resposta['msg'];
+    }
+    
+
+}
+
+

@@ -21,12 +21,6 @@ class HomeController
     {
         include 'views\pages\administrador\menuAdm.php';
     }
-
-     //NEW
-    public static function gerenciaADM()
-    {
-        include 'views\pages\administrador\crudSecretario.php';
-    }
     
     public static function menuSecretario()
     {
@@ -91,6 +85,45 @@ class HomeController
     public static function saveEvento()
     {
         include 'controllerEvento\CadastroEventoController.php';           
+    }
+
+    public static function PagArtigos()
+    {
+        include 'views\pages\secretario\pagArtigos.php';
+    }
+
+    public static function PagSecretario()
+    {
+        include 'views\pages\administrador\pagSecretario.php';
+    }
+
+    public static function saveSecretario()
+    {
+        include 'controllerSecretario\CadastroSecretarioController.php';           
+    }
+
+    public static function buscaSecretario()
+    {
+        include 'controllerSecretario\VerificarSecretarioController.php';            
+    }
+
+    public static function PagAdmAutores()
+    {
+        include 'views\pages\administrador\pagAutores.php';
+    }
+
+    public static function PagAdmEvento()
+    {
+        include 'views\pages\administrador\pagEvento.php';
+    }
+    
+    public static function PagAdmOrganizador()
+    {
+        include 'views\pages\administrador\pagOrganizador.php';
+    }
+    public static function PagAdmArtigos()
+    {
+        include 'views\pages\administrador\pagArtigos.php';
     }
    
 

@@ -7,12 +7,11 @@ class Organizador extends Pessoa{
     private $conn;
     private $cpf;
 
-    /** Get the value of id     */ 
     public function getId()
     {
         return $this->id;
     }
-    /** Set the value of id */
+    
     public function setId($id)
     {
         $this->id = $id;
@@ -117,11 +116,9 @@ class Organizador extends Pessoa{
         $conn = conexaoDB::conexao();
 
         $stmt = "SELECT * FROM organizador ORDER BY Organizador_ID DESC";
-
         $stmt = $conn->prepare($stmt);
-
         $stmt->execute();
-        $resultado = array();
+         $resultado = array();
 
         $resultado = $stmt->fetchAll(PDO::FETCH_CLASS);
 
@@ -130,17 +127,27 @@ class Organizador extends Pessoa{
         }
 
         return $resultado;
+
     }
 
-    public static function deletarOrganizador(int $id): bool{
+    public static function deletarOrganizador(int $id){
 
         $conn = conexaoDB::conexao();
 
-        $sql = 'DELETE FROM organizador WHERE Organizador_ID = ?';
+        $sql = "SELECT COUNT(*) FROM organizador_evento WHERE Organizador_id_fk = :id";
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(1, $id);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $count = $stmt->fetchColumn();
 
-        return $stmt->execute();
+        if($count > 0){
+            return false;
+        }else{
+            $sql = 'DELETE FROM organizador WHERE Organizador_ID = ?';
+            $stmt = $conn->prepare($sql);
+            $stmt->bindValue(1, $id);
+            return $stmt->execute();
+        }
     }
 
     public static function verificarOrganizador(int $id){
