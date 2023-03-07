@@ -15,19 +15,21 @@ if (isset($_SESSION['tipo_usuario'])) {
     }
 }
 
-?><!DOCTYPE html>
+?>
+
+<!DOCTYPE html>
 <html lang="pt">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="views/css/style.css">
-        <link rel="stylesheet" href="views/css/stlylemodal.css">
+        <link rel="stylesheet" href="../css/style.css">
+        <link rel="stylesheet" href="../css/stlylemodal.css">
         <title>Biblioteca Científica Digital</title>
     </head>
 
     <body>
-        <?php
+    <?php
             if (isset($_SESSION['login_erro'])) { // verifica se a variável de sessão existe
                 echo '  <div id ="modal2"; >
                             <div class="modal";>
@@ -44,10 +46,9 @@ if (isset($_SESSION['tipo_usuario'])) {
                 unset($_SESSION['login_erro']); // remove a variável de sessão
             }
         ?>
-
-        <header>
+          <header>
             <div class = "container">
-                <div class = "logo"><a href="/"><img src="views/img/logo.png" style="width: 200px; height: 120px;"></a></div>
+                <div class = "logo"><a href="/"><img src="../img/logo.png" style="width: 200px; height: 120px;"></a></div>
                 <div class = "menu">
                     <nav>
                         <a href="#Sobre">Sobre</a>
@@ -97,33 +98,80 @@ if (isset($_SESSION['tipo_usuario'])) {
                     <div class="blocos">
                         </br></br></br></br></br>
                         <div class="dentro_bloco" id="Colaborador">
-                            <h3>Sobre a Biblioteca Científica Digital</h3>
-                            <a>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
-                                Aliquam sodales faucibus lacus eu faucibus. Ut pulvinar dictum faucibus. Donec et consectetur nisi, eget dignissim turpis. Quisque eget vestibulum dui, vel tristique ante.
-                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.
-                                Nam non purus vestibulum, sodales nisl quis, maximus purus. Vivamus finibus tempor tristique.
-                            </a>
+                        <h1>Evento xxxxxxxxx</h1>
                         </div>
                         </br></br></br>
-                        <div class="dentro_bloco" id="Colaborador">
-                            <h3>Quero ser um Colaborador</h3>
-                            <a>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
+
+                        <div class="dentro_bloco" id="Colaborador" style="padding:30px;">
+                            
+                            <h3>      - Lorem ipsum </h3>
+                            </br></br>
+                           
+                                <ul>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
+                                    </li>
+                                    </br></br>
+                                <li>
                                 Aliquam sodales faucibus lacus eu faucibus. Ut pulvinar dictum faucibus. Donec et consectetur nisi, eget dignissim turpis. Quisque eget vestibulum dui, vel tristique ante.
-                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.
+                                </li>
+                                </br></br>
+                                <li>
+                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.    
+                                </li>
+                                </br></br>
+                                <li>
                                 Nam non purus vestibulum, sodales nisl quis, maximus purus. Vivamus finibus tempor tristique.
-                            </a>
+                                </li>
+                          
                         </div>
                         </br></br></br>
-                        <div class="dentro_bloco" id="Artigo">
-                            <h3>Submeta seu Artigo</h3>
-                            <a>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
+                        <div class="dentro_bloco" id="Colaborador" style="padding:30px;">
+                            
+                            <h3>      - Lorem ipsum </h3>
+                            </br></br>
+                           
+                                <ul>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
+                                    </li>
+                                    </br></br>
+                                <li>
                                 Aliquam sodales faucibus lacus eu faucibus. Ut pulvinar dictum faucibus. Donec et consectetur nisi, eget dignissim turpis. Quisque eget vestibulum dui, vel tristique ante.
-                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.
+                                </li>
+                                </br></br>
+                                <li>
+                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.    
+                                </li>
+                                </br></br>
+                                <li>
                                 Nam non purus vestibulum, sodales nisl quis, maximus purus. Vivamus finibus tempor tristique.
-                            </a>
+                                </li>
+                          
+                        </div>
+                        </br></br></br>
+                        <div class="dentro_bloco" id="Colaborador" style="padding:30px;">
+                            
+                            <h3>      - Lorem ipsum </h3>
+                            </br></br>
+                           
+                                <ul>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus congue lacus tellus, ut semper ligula tristique in. Ut a varius lorem, eu egestas mi.
+                                    </li>
+                                    </br></br>
+                                <li>
+                                Aliquam sodales faucibus lacus eu faucibus. Ut pulvinar dictum faucibus. Donec et consectetur nisi, eget dignissim turpis. Quisque eget vestibulum dui, vel tristique ante.
+                                </li>
+                                </br></br>
+                                <li>
+                                Duis id odio in lorem rhoncus sodales. Nam in turpis vitae nisl mattis lacinia. Aenean ullamcorper consectetur erat ut sagittis.    
+                                </li>
+                                </br></br>
+                                <li>
+                                Nam non purus vestibulum, sodales nisl quis, maximus purus. Vivamus finibus tempor tristique.
+                                </li>
+                          
                         </div>
                         </br></br></br></br></br></br>
                     </div>
@@ -131,7 +179,7 @@ if (isset($_SESSION['tipo_usuario'])) {
             </div>   
         </section>
         
-        <script src="views/js/jquery-3.6.0.min.js"></script> 
+        <script src="../js/jquery-3.6.0.min.js"></script> 
         <script>
             $(document).ready(function(){
                 $("#btn1").click(function(){
@@ -149,7 +197,7 @@ if (isset($_SESSION['tipo_usuario'])) {
         <footer>
             <div class="wrapper">
                 <div class="company-footer">
-                    <img src="views/img/logo.png" style="width: 200px; height: 120px;">
+                    <img src="../img/logo.png" style="width: 200px; height: 120px;">
                     <div class="text">   
                         <h2>BCD © 2023 | All rights reserved.</h2>
                     </div>
