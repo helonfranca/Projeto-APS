@@ -78,8 +78,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <div class= "form-dados">
                                         <label for="nome">Nome do Autor:</label></br>
                                         <input type="text" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <label for="DataNascimento">Data de Nascimento:</label></br>
+                                        <input type="date" id="dataNascimento" name="dataNascimento" min="1900-01-01" max="2099-12-31" required><br>
                                         <label for="CurriculoLattes">Curriculo-lattes:</label></br>
                                         <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
@@ -90,8 +90,8 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                             <option value="Feminino" selected id="opsexo" name="opsexo">Feminino</option>
                                             <option value="Prefiro não dizer" id="opsexo" name="opsexo">Prefiro não dizer</option>
                                         </select></br></br>
-                                        <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder=""></br>
+                                        <label for="telefone">Telefone:</label>
+                                        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" oninput="mascaraTelefone(this)">
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -234,6 +234,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
         </section>
         
+        <script src="views/js/validacoes.js"></script>
         <script src="views/js/functions.js"></script> 
         <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script src="views/js/functionsmodais.js"></script>

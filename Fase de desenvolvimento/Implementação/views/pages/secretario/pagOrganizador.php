@@ -77,23 +77,33 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                     <h1>Adicionar novo organizador</h1></br>
                                     <div class= "form-dados">
                                         <label for="nome">Nome do Organizador:</label></br>
-                                        <input type="text" id="nome" name="nome" placeholder="" required></br>
-                                        <label for="DataDeNascimento">Data de Nascimento:</label></br>
-                                        <input type="date" id="DataDeNascimento" name="DataDeNascimento" placeholder="" required></br>
+                                        <input type="nome" id="nome" name="nome" placeholder="" required></br>
+
+                                        <label for="cpf">CPF:</label>
+                                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" oninput="mascaraCPF(this)"></br>
+
+                                        <label for="telefone">Telefone:</label>
+                                        <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000" oninput="mascaraTelefone(this)">
+
+                                        <label for="DataNascimento">Data de Nascimento:</label></br>
+                                        <input type="date" id="dataNascimento" name="dataNascimento" min="1900-01-01" max="2099-12-31" required><br>
+
+                                        <label for="sexo">Sexo:</label></br>
+                                        <select name="sexo" id="sexo">
+                                            <option value="Masculino" id="opsexo" name="opsexo">Masculino</option>
+                                            <option value="Feminino" selected id="opsexo" name="opsexo">Feminino</option>
+                                            <option value="Prefiro não dizer" id="opsexo" name="opsexo">Prefiro não dizer</option>
+                                        </select></br></br>
+
+                                        <label for="email">E-mail:</label></br>
+                                        <input type="email" id="email" name="email" placeholder="" required></br>
+
+                                        
                                         <label for="CurriculoLattes">Curriculo-lattes:</label></br>
                                         <input type="text" id="CurriculoLattes" name="CurriculoLattes" placeholder="" required></br>
                                         <label for="Instituição">Instituição:</label></br>
                                         <input type="text" id="Instituição" name="instituicao" placeholder="" required></br>
-                                        <label for="sexo">Sexo:</label></br>
-                                        <select name="sexo" id="sexo">
-                                            <option value="Masculino" id="opsexo" name="opsexo">Masculino</option>
-                                            <option value="Feminino" id="opsexo" name="opsexo">Feminino</option>
-                                            <option value="Prefiro não dizer" selected id="opsexo" name="opsexo">Prefiro não dizer</option>
-                                        </select></br></br>
-                                        <label for="Telefone">Telefone:</label></br>
-                                        <input type="number" id="Telefone" name="telefone" placeholder="" required></br>
-                                        <label for="Cpf">Cpf:</label></br>
-                                        <input type="number" id="Cpf" name="cpf" placeholder="" required></br>
+                                        
                                     </div>
                                     <div style = "text-align:center; margin-left: auto; margin-right: auto;">
                                         <button type="submit">Confirmar</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -242,6 +252,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
             </div>
         </section>
         
+        <script src="views/js/validacoes.js"></script>
         <script src="views/js/functions.js"></script> 
         <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script src="views/js/functionsmodais.js"></script>

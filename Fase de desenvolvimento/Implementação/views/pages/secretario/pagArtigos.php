@@ -81,7 +81,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
                                         <input type="date" id="datapub" name="datapub" placeholder="" required></br>
                                         <label for="autores">Autores:</label></br>
                                         <input type="text" id="autores" name="autores" placeholder="" required></br>
-                                        <label for="email">Email:</label></br>
+                                        <label for="email">E-mail:</label></br>
                                         <input type="email" id="email" name="email" placeholder="" required></br>
                                         <label for="arquivopdf">Arquivo PDF:</label></br>
                                         <input type="file" id="arquivopdf" name="arquivopdf" placeholder="" accept=".pdf" required></br>
@@ -305,6 +305,7 @@ if (!isset($_SESSION['tipo_usuario']) || $_SESSION['tipo_usuario'] != "2") {
              
         </section>
 
+        <script src="views/js/validacoes.js"></script>   
         <script src="views/js/functions.js"></script> 
         <script src="views/js/jquery-3.6.0.min.js"></script> 
         <script src="views/js/functionsmodais.js"></script>
